@@ -1,0 +1,36 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.input_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.input_info input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.input_info button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  cursor: pointer;
+    font-size: 14px;
+}

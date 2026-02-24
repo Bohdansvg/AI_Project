@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/lesson1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/lesson1/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/AI_Bot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/ai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/ai_bot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/send.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_bot/style.css" afterDir="false" />
+    </list>
+    <list id="16fd9c63-11b0-4c56-8ea2-462ac5dcd906" name="Changes by argor" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="391KsFBzJh0B4KkE4NihucT23to" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp Laptop/WebstormProjects/JS_Course/ai_bot&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2025.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\les2\public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
+      <created>1769858343253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769858343253</updated>
+      <workItem from="1769858345246" duration="526000" />
+      <workItem from="1769858908523" duration="2201000" />
+      <workItem from="1770118347199" duration="3093000" />
+      <workItem from="1770287931975" duration="6132000" />
+      <workItem from="1770310749026" duration="3396000" />
+      <workItem from="1770450661955" duration="2907000" />
+      <workItem from="1770472934079" duration="3056000" />
+      <workItem from="1770721305031" duration="3492000" />
+      <workItem from="1770977215452" duration="1995000" />
+      <workItem from="1770979296413" duration="1216000" />
+      <workItem from="1771232315621" duration="102000" />
+      <workItem from="1771232572906" duration="4637000" />
+      <workItem from="1771257639349" duration="827000" />
+      <workItem from="1771258487255" duration="57000" />
+      <workItem from="1771261247512" duration="5868000" />
+      <workItem from="1771330690793" duration="792000" />
+      <workItem from="1771332812647" duration="1629000" />
+      <workItem from="1771405308372" duration="2973000" />
+      <workItem from="1771519911792" duration="1999000" />
+      <workItem from="1771521947594" duration="4375000" />
+      <workItem from="1771526392913" duration="334000" />
+      <workItem from="1771615514124" duration="377000" />
+      <workItem from="1771671830799" duration="2957000" />
+      <workItem from="1771928370223" duration="1395000" />
+      <workItem from="1771934501796" duration="2672000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
