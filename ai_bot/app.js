@@ -15,9 +15,9 @@ async function login(){
 
     if(res.ok){
         localStorage.setItem("token", data.token)
-        window.location.href = "chat.html"
+        window.location.href = "ai_bot.html"
     } else {
-        alert("Login failed")
+        alert("Login failed" + (data.error || data.message));
     }
 }
 
@@ -35,9 +35,12 @@ async function register(){
     })
 
     if(res.ok){
+        const data = await res.json()
+        localStorage.setItem("token", data.token)
         alert("Registered!")
-        window.location.href = "login.html"
+        window.location.href = "ai_bot.html"
     } else {
+        const errorData = await res.json()
         alert("Registration failed")
     }
 }
