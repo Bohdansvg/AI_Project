@@ -18,7 +18,7 @@ async function register(req, res) {
         const token = jwt.sign(
             { id: userId },
             "SECRET_KEY",
-            { expiresIn: "1h" }
+            { expiresIn: "10h" }
         );
         res.json({ message: "User registered successfully", userId, token });
     } catch (error) {
@@ -59,4 +59,18 @@ async function login(req, res) {
     }
 }
 
-module.exports = { register, login }
+function verifyToken(req, res, next) {
+    const header = req.headers['authorization']
+    if (!header)return res.status(401).json( {error: "Unauthorized"});
+
+    const token = header.split(' ')[1];
+    if (!token) return res.status(401).json( {error: "format"});
+
+    jwt.verify(token, "SECRET_KEY", (err, decoded) => {
+        if (err) return res.status(403).json({ error: "problem with the token" });
+
+        req.userId = decoded.id;
+        next();
+    })
+}
+module.exports = { register, login, verifyToken };

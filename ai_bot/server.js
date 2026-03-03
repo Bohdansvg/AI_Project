@@ -15,32 +15,86 @@ app.post("/login", login)
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-app.post("/api/chat", async (req, res) => {
+const pool = require("./db.js")
+const {verify} = require("jsonwebtoken");
+const {verifyToken} = require("./auth");
+app.get("api/chats", verifyToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            "SELECT id, title, created_at FROM chats WHERE user_id = $1 ORDER BY created_at ASC ",
+            [req.userId]
+        )
+        res.json(result.rows)
+    } catch (error) {
+        console.log("Chats err", error);
+        res.status(500).send("Server error", error);
+    }
+})
+
+app.post("/api/chats", verifyToken, async (req, res) => {
+    const {title} = req.body;
+    const chatTitle = title || "New Chat";
+    try{
+        const result = await pool.query(
+            "INSERT INTO chats (user_id, title) VALUES ($1, $2) RETURNING id, title, created_at",
+            [req.userId, chatTitle],
+        )
+        res.json(result.rows[0])
+    }catch(error){
+        console.log(error, "Chat creation err");
+        res.status(500).json({error: "Server error bad try to create a chat"});
+    }
+})
+
+app.get("/api/chats/:id/messages", verifyToken, async (req, res) => {
+    const chatId = req.params.id;
+    try{
+        const chatCheck = await pool.query("SELECT id FROM chats WHERE id = $1 AND user_id = $2", [chatId, req.userId]);
+        if(chatCheck.rows.length === 0){
+            return res.status(403).json({error: "Access denied"});
+        }
+        const result = await pool.query("SELECT role, content FROM messages WHERE chat_id = $1 ORDER BY created_at ASC ",[chatId]);
+        res.json(result.rows)
+    } catch (error) {
+        console.error("Message err", error);
+        res.status(500).json({error: "Server error"});
+    }
+})
+
+app.post("/api/chats/:id/messages",verifyToken, async (req, res) => {
+    const chatId = req.params.id;
     const { message } = req.body;
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-    console.log("Incoming message:", message);
     if (!GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY is missing!");
         return res.status(500).json({ error: "Server configuration error" });
     }
 
     try {
+        const chatCheck = await pool.query("SELECT id FROM chats WHERE id = $1 AND user_id = $2", [chatId, req.userId]);
+        if(chatCheck.rows.length === 0) {
+            return res.status(403).json({error: "Access denied"});
+        }
+
+        await pool.query(
+            "INSERT INTO messages (chat_id, role, content) VALUES ($1, $2, $3)",
+            [chatId, 'user', message],
+        )
+
         const response = await fetch(
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
                     contents: [{
-                        parts: [{ text: message }]
-                    }
-                    ]
+                        parts: [{text: message}]
+                    }]
                 })
             }
         )
         const data = await response.json();
-        console.log("Gemini API response:", JSON.stringify(data, null, 2));
 
         if (data.error) {
             const errorMessage = data.error.code === 429
@@ -49,13 +103,18 @@ app.post("/api/chat", async (req, res) => {
             return res.json({ reply: errorMessage });
         }
 
-        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? 'no reply'
-        console.log("AI reply:", reply);
+        const reply = data?.candidates?.parts?.[0]?.text ?? 'no reply'
+
+        await pool.query(
+            "INSERT INTO messages (chat_id, role, content) VALUES ($1, $2, $3)",
+            [chatId, 'ai' , message],
+        )
+
 
         res.json({ reply });
 
     } catch (err) {
-        console.error("Fetch error:", err);
+        console.error("FetchDB error:", err);
         res.status(500).json({ error: "Internal server error" });
     }
 })

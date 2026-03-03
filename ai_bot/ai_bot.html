@@ -3,18 +3,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI</title>
+    <title>AI Bot</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="ai.png">
 </head>
 <body>
-<div class="chat">
-    <h1>Chat Bot</h1>
-    <div id="messages"></div>
-    <div class="message-content">...</div>
-    <div class="input">
-        <input id="userInput" placeholder="Enter your message"/>
-        <button class="send" onclick="sendMessage()"></button>
+    <div class="app-container">
+        <div class="sidebar">
+            <button class="new-chat-btn" onclick="createNewChat()">+ New Chat</button>
+            <div id="chatList" class="chat-list"></div>
+        </div>
     </div>
+
+<div class="chat">
+        <h1 id="chatTitle">ChatBot</h1>
+    <button class="logout" onclick="logout()"></button>
+
+    <div id="messages"></div>
+    <div class="input">
+        <input id="userInput" placeholder="Enter your message" disabled/>
+        <button class="send" onclick="sendMessage()" disabled></button>
+    </div>
+
 </div>
 
 </body>

@@ -34,3 +34,22 @@ body {
     cursor: pointer;
     font-size: 14px;
 }
+
+.logout {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+    border: none;
+    padding: 0;
+    background-image: url("logout.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+}
