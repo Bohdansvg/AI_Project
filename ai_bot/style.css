@@ -245,8 +245,8 @@ body {
     top: 10px;
     right: 10px;
 
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
 
     background: transparent;
     border: none;
@@ -258,6 +258,55 @@ body {
     background-position: center;
 
     cursor: pointer;
+}
+
+.new-chat-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: url("new-chat.png") center/contain no-repeat;
+    cursor: pointer;
+}
+
+.app-container{
+    display: flex;
+    height: 100vh;
+}
+.chat{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-list{
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    display: flex;
+    overflow:auto;
+}
+
+.chat-item{
+    cursor: pointer;
+    transition: background 0.3s, font-weight 0.2s;
+    border-radius: 6px;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+.chat-item:hover{
+    background: rgba(255, 255, 255, 0.5);
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+    padding-left: 7px;
+}
+
+.chat-item.active{
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: bold;
+    border-left: 3px solid blue;
 }
 
 

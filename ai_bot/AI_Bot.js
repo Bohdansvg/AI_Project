@@ -1,4 +1,6 @@
 const API = "http://localhost:3000/api"
+let currentChatId = null;
+let chatsData = []
 
 if (!localStorage.getItem("token")) {
     window.location.href = "login.html"
@@ -46,7 +48,7 @@ function addMessage(text, type) {
 }
 
 function sendMessage() {
-    if(!currentChatId)  return;
+    if (!currentChatId) return;
     const input = document.getElementById("userInput");
     const text = input.value.trim();
     if (!text) return;
@@ -59,10 +61,23 @@ function sendMessage() {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
+        },
+        body: JSON.stringify({ message: text })
     })
         .then(res => res.json())
         .then(data => {
+            if(data.newTitle){
+                document.getElementById("chatTitle").textContent = data.newTitle;
+                const chatIndex = chatsData.findIndex(c => c.id === currentChatId);
+                if (chatIndex !== -1) {
+                    chatsData[chatIndex].title = data.newTitle;
+                    renderChatList(chatsData);
+                }
+            }
+
+
+
+
             addMessage(" " + data.reply, "ai");
         })
         .catch(() => {
@@ -92,24 +107,24 @@ function logout() {
 }
 document.addEventListener("DOMContentLoaded", loadChats)
 
-async function  loadChats() {
+async function loadChats() {
     const token = localStorage.getItem("token");
-    try{
+    try {
         const res = await fetch(`${API}/chats`, {
-            headers: {"Authorization": `Bearer ${token}`}
+            headers: { "Authorization": `Bearer ${token}` }
         })
 
-        if (res.ok){
-            const chats = await res.json();
-            renderChatList(chats);
+        if (res.ok) {
+            chatsData = await res.json();
+            renderChatList(chatsData);
 
-            if (chats.length > 0){
-                selectChat(chats[0].id, chats[0].title);
-            } else{
+            if (chatsData.length > 0 && currentChatId === null) {
+                selectChat(chatsData[0].id, chatsData[0].title);
+            } else if (chatsData.length === 0) {
                 createNewChat();
             }
         }
-    } catch(err){
+    } catch (err) {
         console.error("Error loading chats", err);
     }
 
@@ -129,21 +144,21 @@ function renderChatList(chats) {
 
 async function createNewChat() {
     const token = localStorage.getItem("token");
-    try{
+    try {
         const res = await fetch(`${API}/chats`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify({title: "New Chat"})
+            body: JSON.stringify({ title: "New Chat" })
         })
-        if (res.ok){
+        if (res.ok) {
             const newChat = await res.json();
             selectChat(newChat.id, newChat.title);
-            loadChats();
+            renderChatList(chatsData);
         }
-    }catch(err){
+    } catch (err) {
         console.error("Error creating chat", err);
     }
 }
@@ -156,16 +171,17 @@ async function selectChat(id, title) {
     document.getElementById("userInput").disabled = false;
     document.getElementById("sendBtn").disabled = false;
 
-    document.querySelectorAll('.chat-item').forEach(el => el.classList.remove('active'))
-    loadChats();
+    document.querySelectorAll('.chat-item').forEach(el => {
+        el.classList.toggle('active', el.textContent === title);
+    })
 
     const token = localStorage.getItem("token");
-    try{
+    try {
         const res = await fetch(`${API}/chats/${currentChatId}/messages`, {
-            headers: {"Authorization": `Bearer ${token}`}
+            headers: { "Authorization": `Bearer ${token}` }
         })
 
-        if (res.ok){
+        if (res.ok) {
             const messages = await res.json();
             messages.forEach(msg => {
                 addMessage(" " + msg.content, msg.role)
@@ -173,8 +189,9 @@ async function selectChat(id, title) {
         }
 
 
-    } catch(err){
+    } catch (err) {
         console.error("Error loading history", err);
     }
 }
+
 
