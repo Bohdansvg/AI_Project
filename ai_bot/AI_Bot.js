@@ -194,4 +194,10 @@ async function selectChat(id, title) {
     }
 }
 
+function toggleSidebar() {
 
+    const sidebar = document.querySelector(".sidebar");
+
+    sidebar.classList.toggle("active");
+
+}

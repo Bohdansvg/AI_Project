@@ -308,5 +308,34 @@ body {
     font-weight: bold;
     border-left: 3px solid blue;
 }
+.menu-btn{
+    position:absolute;
+
+    top:10px;
+    left:10px;
+
+    width:35px;
+    height:35px;
+
+    border:none;
+    cursor:pointer;
+
+    background:url("showing_chats.png") center/contain no-repeat;
+    background-color:transparent;
+}
+.chat-header{
+    position:relative;
+}
+.sidebar{
+    width:0;
+    height:100vh;
+    background:lightgray;
+    overflow:hidden;
+    transition:0.3s;
+
+}
+.sidebar.active{
+    width:250px;
+}
 
 
