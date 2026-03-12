@@ -62,11 +62,11 @@ function sendMessage() {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({message: text})
     })
         .then(res => res.json())
         .then(data => {
-            if(data.newTitle){
+            if (data.newTitle) {
                 document.getElementById("chatTitle").textContent = data.newTitle;
                 const chatIndex = chatsData.findIndex(c => c.id === currentChatId);
                 if (chatIndex !== -1) {
@@ -74,8 +74,6 @@ function sendMessage() {
                     renderChatList(chatsData);
                 }
             }
-
-
 
 
             addMessage(" " + data.reply, "ai");
@@ -105,13 +103,14 @@ function logout() {
     localStorage.removeItem("token");
     window.location.href = "login.html";
 }
+
 document.addEventListener("DOMContentLoaded", loadChats)
 
 async function loadChats() {
     const token = localStorage.getItem("token");
     try {
         const res = await fetch(`${API}/chats`, {
-            headers: { "Authorization": `Bearer ${token}` }
+            headers: {"Authorization": `Bearer ${token}`}
         })
 
         if (res.ok) {
@@ -136,7 +135,17 @@ function renderChatList(chats) {
     chats.forEach(chat => {
         const div = document.createElement("div");
         div.className = `chat-item ${chat.id === currentChatId ? "active" : ""}`;
-        div.textContent = chat.title;
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = chat.title;
+        titleSpan.style.flex = "1"
+        titleSpan.style.overflow = "hidden";
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete";
+        deleteBtn.innerHTML = '<img src="JS_Course/ai_bot/remove.png">';
+        deleteBtn.onclick = (e) => deleteChat(chat.id, e)
+        div.appendChild(titleSpan);
+        div.appendChild(deleteBtn);
         div.onclick = () => selectChat(chat.id, chat.title);
         chatList.appendChild(div);
     })
@@ -151,7 +160,7 @@ async function createNewChat() {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify({ title: "New Chat" })
+            body: JSON.stringify({title: "New Chat"})
         })
         if (res.ok) {
             const newChat = await res.json();
@@ -178,7 +187,7 @@ async function selectChat(id, title) {
     const token = localStorage.getItem("token");
     try {
         const res = await fetch(`${API}/chats/${currentChatId}/messages`, {
-            headers: { "Authorization": `Bearer ${token}` }
+            headers: {"Authorization": `Bearer ${token}`}
         })
 
         if (res.ok) {
@@ -199,5 +208,40 @@ function toggleSidebar() {
     const sidebar = document.querySelector(".sidebar");
 
     sidebar.classList.toggle("active");
+}
+
+async function deleteChat(chatId, event) {
+    event.stopPropagation();
+
+    if (!confirm("Are you sure you want to delete this chat?")) {
+        return;
+    }
+
+    const token = localStorage.getItem("token");
+    try {
+        const res = await fetch(`${API}/chats/${ChatId}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Bearer ${token}`}
+        })
+
+        if (res.ok) {
+            chatsData = chatsData.filter(chat => chat.id !== chatId);
+            renderChatList(chatsData);
+
+            if (currentChatId === chatId) {
+                currentChatId = null;
+                document.getElementById("chatTitle").textContent = "Select a chat";
+                document.getElementById("messages").innerHTML = ""
+                document.getElementById("userInput").disabled = true;
+                document.getElementById("sendBtn").disabled = true;
+
+                if (chatsData.length > 0) {
+                    selectChat(chatsData[0].id, chatsData[0].title);
+                }
+            }
+        }
+    } catch (err) {
+        console.error("Error deleting chat", err);
+    }
 
 }
