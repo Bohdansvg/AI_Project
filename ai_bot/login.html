@@ -6,15 +6,33 @@
     <link rel="stylesheet" href="login.css">
     <link rel="icon" type="image/png" href="ai.png">
 </head>
-<body>
-<div class="login">
-    <h1>Login</h1>
 
-    <input type="text" id="email" placeholder="Enter your email">
-    <input type="password" id="password" placeholder="Enter your password">
-    <button onclick="login()">Login</button>
-    <p>Don't have account? <a href="auth.html">Register</a></p>
+<body>
+
+<div class="login-container">
+
+    <div class="input_info">
+
+        <h2>Login</h2>
+
+        <input type="text" id="email" placeholder="Email">
+
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <p class="register-link">
+
+            Don't have account?
+            <a href="auth.html">Register</a>
+
+        </p>
+
+    </div>
+
 </div>
+
 <script src="app.js"></script>
+
 </body>
 </html>

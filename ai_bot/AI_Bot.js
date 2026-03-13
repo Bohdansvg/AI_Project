@@ -135,6 +135,7 @@ function renderChatList(chats) {
     chats.forEach(chat => {
         const div = document.createElement("div");
         div.className = `chat-item ${chat.id === currentChatId ? "active" : ""}`;
+
         const titleSpan = document.createElement("span");
         titleSpan.textContent = chat.title;
         titleSpan.style.flex = "1"
