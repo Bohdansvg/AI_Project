@@ -140,10 +140,12 @@ function renderChatList(chats) {
         titleSpan.textContent = chat.title;
         titleSpan.style.flex = "1"
         titleSpan.style.overflow = "hidden";
+        titleSpan.textOverflow = "ellipsis";
+        titleSpan.style.whiteSpace = "nowrap";
 
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete";
-        deleteBtn.innerHTML = '<img src="JS_Course/ai_bot/remove.png">';
+        deleteBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`
         deleteBtn.onclick = (e) => deleteChat(chat.id, e)
         div.appendChild(titleSpan);
         div.appendChild(deleteBtn);
@@ -220,7 +222,7 @@ async function deleteChat(chatId, event) {
 
     const token = localStorage.getItem("token");
     try {
-        const res = await fetch(`${API}/chats/${ChatId}`, {
+        const res = await fetch(`${API}/chats/${chatId}`, {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`}
         })
@@ -244,5 +246,4 @@ async function deleteChat(chatId, event) {
     } catch (err) {
         console.error("Error deleting chat", err);
     }
-
 }

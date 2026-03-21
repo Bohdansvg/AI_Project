@@ -170,7 +170,7 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
         );
 
         if (!response.ok) {
-            throw new Error("Gemini API error " + response.status);
+            throw new Error("API error " + response.status);
         }
 
         const data = await response.json();
@@ -195,6 +195,7 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
 });
 
 app.delete("/api/chats/:id", verifyToken, async (req, res) => {
+    const chatId = req.params.id
     try{
         const chatCheck = await pool.query("SELECT id FROM chats WHERE id = $1 AND user_id=$2", [chatId, req.userId])
         if(chatCheck.rows.length === 0) {
@@ -202,7 +203,7 @@ app.delete("/api/chats/:id", verifyToken, async (req, res) => {
         }
         await pool.query("DELETE FROM messages WHERE chat_id = $1", [chatId])
 
-        await pool.query("DELETE FROM chat WHERE id = $1", [chatId])
+        await pool.query("DELETE FROM chats WHERE id = $1", [chatId])
         res.json({message: "Chat deleted successfully."})
     }catch(error) {
         console.error("Delete error:", error);

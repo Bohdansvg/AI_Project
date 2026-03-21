@@ -1,105 +1,177 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inconsolata:wght@400;500&display=swap');
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
+}
 
+:root {
+    --bg-0:       #080a0f;
+    --bg-1:       #0e1118;
+    --bg-2:       #141720;
+    --bg-3:       #1c2030;
+    --accent:     #5b8cff;
+    --accent-2:   #a78bfa;
+    --accent-glow: rgba(91,140,255,0.18);
+    --text-hi:    #e2e8f8;
+    --text-mid:   #8892ab;
+    --text-lo:    #3a4257;
+    --border:     rgba(255,255,255,0.06);
+    --border-a:   rgba(91,140,255,0.22);
+    --radius:     18px;
+    --radius-sm:  11px;
+    --t:          0.28s cubic-bezier(0.4,0,0.2,1);
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    font-family: 'Syne', sans-serif;
     height: 100vh;
-
+    background: var(--bg-0);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    overflow: hidden;
 }
+
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+body::before {
+    width: 560px; height: 560px;
+    top: -180px; right: -100px;
+    background: radial-gradient(circle, rgba(91,140,255,0.09) 0%, transparent 70%);
+}
+body::after {
+    width: 400px; height: 400px;
+    bottom: -120px; left: 20px;
+    background: radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 70%);
+}
+
 
 .login-container {
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
+
 
 .input_info {
     display: flex;
     flex-direction: column;
-
-    padding: 30px;
-    width: 320px;
-    background: white;
-    border-radius: 12px;
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    padding: 40px 36px 36px;
+    width: 360px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+    animation: cardIn 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+    position: relative;
+    overflow: hidden;
 }
 
-.input_info input:focus {
-    border-color: #667eea;
-    outline: none;
 
-    transform: scale(1.02);
-
-    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+.input_info::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    opacity: 0.8;
 }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 
 .input_info h2 {
+    font-family: 'Inconsolata', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-align: center;
-    margin-bottom: 20px;
+    color: var(--text-hi);
+    margin-bottom: 28px;
+    text-transform: uppercase;
 }
 
-.input_info button {
-    margin-top: 10px;
-    padding: 12px;
+.input_info h2::before { content: '> '; color: var(--accent); opacity: 0.7; }
 
-    background-color: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
 
 .input_info input {
-    margin: 10px 0;
-    padding: 12px;
-
-    border-radius: 8px;
-    border: 1px solid #ddd;
-
+    margin: 7px 0;
+    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    color: var(--text-hi);
     font-size: 14px;
-    transition: 0.3s;
+    font-family: 'Syne', sans-serif;
+    transition: var(--t);
+    outline: none;
 }
 
-.input_info input:focus {
-    borde-color: #667eea;
-    outline: none;
+.input_info input::placeholder { color: var(--text-lo); }
 
-    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+.input_info input:focus {
+    border-color: var(--border-a);
+    background: var(--bg-3);
+    box-shadow: 0 0 0 3px rgba(91,140,255,0.08);
+}
+
+
+.input_info button {
+    margin-top: 18px;
+    padding: 13px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: var(--t);
+    box-shadow: 0 4px 20px rgba(91,140,255,0.3);
 }
 
 .input_info button:hover {
-    background-color: #5563d6;
     transform: translateY(-2px);
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 28px rgba(91,140,255,0.45);
+    filter: brightness(1.08);
 }
 
+.input_info button:active {
+    transform: translateY(0);
+}
+
+
 .register-link {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
+    color: var(--text-mid);
 }
 
 .register-link a {
-    color: #667eea;
+    color: var(--accent);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: var(--t);
 }
 
 .register-link a:hover {
+    color: var(--accent-2);
     text-decoration: underline;
 }
