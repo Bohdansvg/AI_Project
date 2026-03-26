@@ -2,8 +2,9 @@ const API = "/api"
 
 let isLoginMode = false;
 
-function toggleMode(e) {
-    if (e) e.preventDefault();
+function toggleMode() {
+    // function toggleMode(e) {
+    // if (e) e.preventDefault();
     isLoginMode = !isLoginMode;
 
     const container = document.getElementById("authContainer");
@@ -15,12 +16,14 @@ function toggleMode(e) {
         container.classList.add("login-mode");
         title.textContent = "Sign In";
         btn.textContent = "Login";
-        toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
+        // toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
+        toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(); return false;">Register</a>`;
     } else {
         container.classList.remove("login-mode");
         title.textContent = "Create Account";
         btn.textContent = "Register";
-        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Login</a>`;
+        // toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Login</a>`;
+        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(); return false;">Login</a>`;
     }
 }
 
