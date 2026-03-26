@@ -574,7 +574,7 @@ body {
     }
 
     .input-wrap input {
-        font-size: 16px; /* запобігає зуму на iOS */
+        font-size: 16px;
         padding: 14px 16px 14px 42px;
     }
 

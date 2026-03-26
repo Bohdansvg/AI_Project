@@ -2,28 +2,25 @@ const API = "/api"
 
 let isLoginMode = false;
 
-function toggleMode() {
-    // function toggleMode(e) {
-    // if (e) e.preventDefault();
+function toggleMode(e) {
+    if (e) e.preventDefault();
     isLoginMode = !isLoginMode;
 
     const container = document.getElementById("authContainer");
     const title = document.getElementById("authTitle");
-    const btn = document.getElementById("authBtn");
+    const btnText = document.getElementById("btnText");
     const toggleText = document.getElementById("toggleText");
 
     if (isLoginMode) {
         container.classList.add("login-mode");
         title.textContent = "Sign In";
-        btn.textContent = "Login";
-        // toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
-        toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(); return false;">Register</a>`;
+        if (btnText) btnText.textContent = "Sign In";
+        toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
     } else {
         container.classList.remove("login-mode");
         title.textContent = "Create Account";
-        btn.textContent = "Register";
-        // toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Login</a>`;
-        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(); return false;">Login</a>`;
+        if (btnText) btnText.textContent = "Create Account";
+        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Sign in</a>`;
     }
 }
 
@@ -70,7 +67,7 @@ async function register(){
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({user_name,email, password})
+        body: JSON.stringify({user_name, email, password})
     })
 
     if(res.ok){
