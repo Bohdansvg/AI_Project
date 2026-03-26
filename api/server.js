@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("."));
 
-app.post("/register", register);
-app.post("/login", login);
+app.post("/api/register", register);
+app.post("/api/login", login);
 
 // Проверка подключения к базе
 pool.query("SELECT NOW()", (err, res) => {
