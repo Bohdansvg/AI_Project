@@ -16,6 +16,14 @@
     {
       "src": "*.png",
       "use": "@vercel/static"
+    },
+    {
+      "src": "app.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "AI_Bot.js",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
