@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai_bot/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
     </list>
     <list id="0f628cd6-f362-4be7-aab0-bede41c3217a" name="Changes by argor" comment="">
-      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +27,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/auth.html">
-      <ranges>
-        <range start1="0" end1="38" start2="0" end2="0" changelist="0f628cd6-f362-4be7-aab0-bede41c3217a" />
-        <range start1="107" end1="107" start2="69" end2="70" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
-      </ranges>
-    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -86,6 +77,7 @@
       <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course" />
       <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\api" />
       <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
       <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\les2\public" />
@@ -161,7 +153,7 @@
       <workItem from="1774558872922" duration="106000" />
       <workItem from="1774558991722" duration="166000" />
       <workItem from="1774559198648" duration="208000" />
-      <workItem from="1774720963663" duration="2505000" />
+      <workItem from="1774720963663" duration="2935000" />
     </task>
     <servers />
   </component>

@@ -3,11 +3,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 
-const {register, login, verifyToken} = require("./auth.js");
+const { register, login, verifyToken } = require("./auth.js");
 const pool = require("./db.js");
-const result = require("pg/lib/query");
 
-dotenv.config({path: path.join(__dirname, ".env")});
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -16,8 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("."));
 
-app.post("register", register);
-app.post("login", login);
+app.post("/api/register", register);
+app.post("/api/login", login);
 
 // Проверка подключения к базе
 pool.query("SELECT NOW()", (err, res) => {
@@ -43,7 +42,7 @@ app.get("/api/chats", verifyToken, async (req, res) => {
 
     } catch (error) {
         console.error("Chats error:", error);
-        res.status(500).json({error: "Server error"});
+        res.status(500).json({ error: "Server error" });
     }
 });
 
@@ -52,7 +51,7 @@ app.get("/api/chats", verifyToken, async (req, res) => {
 // ============================
 
 app.post("/api/chats", verifyToken, async (req, res) => {
-    const {title} = req.body;
+    const { title } = req.body;
     const chatTitle = title || "New Chat";
 
     try {
@@ -66,7 +65,7 @@ app.post("/api/chats", verifyToken, async (req, res) => {
 
     } catch (error) {
         console.error("Chat creation error:", error);
-        res.status(500).json({error: "Server error creating chat"});
+        res.status(500).json({ error: "Server error creating chat" });
     }
 });
 
@@ -86,7 +85,7 @@ app.get("/api/chats/:id/messages", verifyToken, async (req, res) => {
         );
 
         if (chatCheck.rows.length === 0) {
-            return res.status(403).json({error: "Access denied"});
+            return res.status(403).json({ error: "Access denied" });
         }
 
         const result = await pool.query(
@@ -99,7 +98,7 @@ app.get("/api/chats/:id/messages", verifyToken, async (req, res) => {
     } catch (error) {
 
         console.error("Messages error:", error);
-        res.status(500).json({error: "Server error"});
+        res.status(500).json({ error: "Server error" });
 
     }
 });
@@ -111,15 +110,15 @@ app.get("/api/chats/:id/messages", verifyToken, async (req, res) => {
 app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
 
     const chatId = req.params.id;
-    const {message} = req.body;
+    const { message } = req.body;
 
     if (!message || typeof message !== "string") {
-        return res.status(400).json({error: "Invalid message"});
+        return res.status(400).json({ error: "Invalid message" });
     }
 
     if (!GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY missing");
-        return res.status(500).json({error: "Server config error"});
+        return res.status(500).json({ error: "Server config error" });
     }
 
     try {
@@ -130,7 +129,7 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
         );
 
         if (chatCheck.rows.length === 0) {
-            return res.status(403).json({error: "Access denied"});
+            return res.status(403).json({ error: "Access denied" });
         }
 
         // сохраняем сообщение пользователя
@@ -150,18 +149,18 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
             "UPDATE chats SET title=$1 WHERE id=$2 AND title='New Chat'",
             [newTitle, chatId]
         );
-        console.log("Update", result.rows);
+
 
         // Gemini API
         const response = await fetch(
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     contents: [
                         {
-                            parts: [{text: message}]
+                            parts: [{ text: message }]
                         }
                     ]
                 })
@@ -183,12 +182,12 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
             [chatId, "ai", reply]
         );
 
-        res.json({reply, newTitle});
+        res.json({ reply, newTitle });
 
     } catch (err) {
 
         console.error("Server error:", err);
-        res.status(500).json({error: "Internal server error"});
+        res.status(500).json({ error: "Internal server error" });
 
     }
 });
@@ -198,15 +197,15 @@ app.delete("/api/chats/:id", verifyToken, async (req, res) => {
     try {
         const chatCheck = await pool.query("SELECT id FROM chats WHERE id = $1 AND user_id=$2", [chatId, req.userId])
         if (chatCheck.rows.length === 0) {
-            return res.status(403).json({error: "Access denied"});
+            return res.status(403).json({ error: "Access denied" });
         }
         await pool.query("DELETE FROM messages WHERE chat_id = $1", [chatId])
 
         await pool.query("DELETE FROM chats WHERE id = $1", [chatId])
-        res.json({message: "Chat deleted successfully."})
+        res.json({ message: "Chat deleted successfully." })
     } catch (error) {
         console.error("Delete error:", error);
-        res.status(500).json({error: "Server error"});
+        res.status(500).json({ error: "Server error" });
     }
 })
 
