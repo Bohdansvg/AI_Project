@@ -7,20 +7,28 @@ function toggleMode(e) {
     isLoginMode = !isLoginMode;
 
     const container = document.getElementById("authContainer");
-    const title = document.getElementById("authTitle");
-    const btn = document.getElementById("authBtn");
+    const brandSub = document.getElementById("brandSub");
+    const btnText = document.getElementById("btnText");
     const toggleText = document.getElementById("toggleText");
+    const toggleText1 = document.getElementById("toggleText1");
+    const userNameWrapper = document.getElementById("userNameWrapper");
 
     if (isLoginMode) {
+
         container.classList.add("login-mode");
-        title.textContent = "Sign In";
-        btn.textContent = "Login";
-        toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
+        brandSub.textContent = "Welcome back!";
+        btnText.textContent = "Sign In";
+        userNameWrapper.style.display = "none";
+        toggleText.style.display = "none";
+        toggleText1.style.display = "block";
     } else {
+
         container.classList.remove("login-mode");
-        title.textContent = "Create Account";
-        btn.textContent = "Register";
-        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Login</a>`;
+        brandSub.textContent = "Create your account to get started";
+        btnText.textContent = "Create Account";
+        userNameWrapper.style.display = "block";
+        toggleText.style.display = "block";
+        toggleText1.style.display = "none";
     }
 }
 
@@ -31,7 +39,6 @@ async function handleSubmit() {
         await register();
     }
 }
-
 async function login(){
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
