@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
-    </list>
+    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
     <list id="0f628cd6-f362-4be7-aab0-bede41c3217a" name="Changes by argor" comment="">
-      <change beforePath="$PROJECT_DIR$/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI_Bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/AI_Bot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +150,7 @@
       <workItem from="1774558872922" duration="106000" />
       <workItem from="1774558991722" duration="166000" />
       <workItem from="1774559198648" duration="208000" />
-      <workItem from="1774720963663" duration="2935000" />
+      <workItem from="1774720963663" duration="3126000" />
     </task>
     <servers />
   </component>
