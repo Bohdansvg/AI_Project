@@ -1,51 +1,13 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "server.js",
-      "use": "@vercel/node"
+      "source": "/api/(.*)",
+      "destination": "/api/server.js"
     },
     {
-      "src": "*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.png",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "app.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "AI_Bot.js",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/register",
-      "dest": "server.js"
-    },
-    {
-      "src": "/login",
-      "dest": "server.js"
-    },
-    {
-      "src": "/",
-      "dest": "/auth.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/",
+      "destination": "/auth.html"
     }
   ]
 }

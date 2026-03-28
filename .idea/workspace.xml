@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_bot/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/ai_bot/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
     </list>
-    <list id="0f628cd6-f362-4be7-aab0-bede41c3217a" name="Changes by argor" comment="" />
+    <list id="0f628cd6-f362-4be7-aab0-bede41c3217a" name="Changes by argor" comment="">
+      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +31,17 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/auth.html">
+      <ranges>
+        <range start1="49" end1="54" start2="49" end2="54" changelist="0f628cd6-f362-4be7-aab0-bede41c3217a" />
+        <range start1="71" end1="72" start2="71" end2="75" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
+        <range start1="79" end1="80" start2="82" end2="86" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
+        <range start1="87" end1="88" start2="93" end2="97" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
+        <range start1="94" end1="95" start2="103" end2="106" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
+      </ranges>
+    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -145,10 +163,36 @@
       <workItem from="1774554226847" duration="2552000" />
       <workItem from="1774556815644" duration="579000" />
       <workItem from="1774557408539" duration="435000" />
+      <workItem from="1774557854888" duration="992000" />
+      <workItem from="1774558872922" duration="106000" />
+      <workItem from="1774558991722" duration="166000" />
+      <workItem from="1774559198648" duration="208000" />
+      <workItem from="1774720963663" duration="1742000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="cc82a7b8-44b0-4922-b686-a5f463939a8b" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="cc82a7b8-44b0-4922-b686-a5f463939a8b">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

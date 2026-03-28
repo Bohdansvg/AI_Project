@@ -8,19 +8,19 @@ function toggleMode(e) {
 
     const container = document.getElementById("authContainer");
     const title = document.getElementById("authTitle");
-    const btnText = document.getElementById("btnText");
+    const btn = document.getElementById("authBtn");
     const toggleText = document.getElementById("toggleText");
 
     if (isLoginMode) {
         container.classList.add("login-mode");
         title.textContent = "Sign In";
-        if (btnText) btnText.textContent = "Sign In";
+        btn.textContent = "Login";
         toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleMode(event)">Register</a>`;
     } else {
         container.classList.remove("login-mode");
         title.textContent = "Create Account";
-        if (btnText) btnText.textContent = "Create Account";
-        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Sign in</a>`;
+        btn.textContent = "Register";
+        toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleMode(event)">Login</a>`;
     }
 }
 
@@ -67,7 +67,7 @@ async function register(){
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({user_name, email, password})
+        body: JSON.stringify({user_name,email, password})
     })
 
     if(res.ok){

@@ -6,6 +6,6 @@ const pool = new Pool({
     // database: "ai_chat",
     // password: "1234",
     // port: 5432,
-    connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+    connectionString: process.env.POSTGRES_URL ,
 })
 module.exports = pool
