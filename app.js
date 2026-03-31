@@ -18,6 +18,7 @@ function toggleMode(e) {
         container.classList.add("login-mode");
         brandSub.textContent = "Welcome back!";
         btnText.textContent = "Sign In";
+        toggleText.style.display = "none";
         toggleText1.style.display = "block";
     } else {
 
