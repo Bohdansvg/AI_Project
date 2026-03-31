@@ -215,3 +215,4 @@ app.delete("/api/chats/:id", verifyToken, async (req, res) => {
 // });
 
 module.exports = app;
+module.exports.default = app;

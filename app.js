@@ -18,15 +18,12 @@ function toggleMode(e) {
         container.classList.add("login-mode");
         brandSub.textContent = "Welcome back!";
         btnText.textContent = "Sign In";
-        userNameWrapper.style.display = "none";
-        toggleText.style.display = "none";
         toggleText1.style.display = "block";
     } else {
 
         container.classList.remove("login-mode");
         brandSub.textContent = "Create your account to get started";
         btnText.textContent = "Create Account";
-        userNameWrapper.style.display = "block";
         toggleText.style.display = "block";
         toggleText1.style.display = "none";
     }
