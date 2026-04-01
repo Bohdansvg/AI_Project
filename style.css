@@ -483,17 +483,7 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
-}
 :root {
     --bg-0:        #080a0f;
     --bg-1:        #0e1118;
@@ -1081,49 +1071,13 @@ body::after {
     #messages    { padding: 10px 6%; }
     .input       { padding: 8px 6%; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
 }
-
-
-.main-container, .app-wrapper, #root > div {
-    display: flex !important;
-    flex-direction: row;
-    width: 100vw;
-    height: 100vh;
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
 }
 
-/* 3. Адаптивность для мобильных (экраны меньше 768px) */
-@media (max-width: 768px) {
-    .main-container, .app-wrapper, #root > div {
-        flex-direction: column !important; /* Ставим блоки друг под друга */
-    }
-
-    /* Скрываем боковую панель на мобильных или делаем её на весь экран */
-    .sidebar, aside {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        display: none; /* Часто на мобильных меню прячут под «бургер» */
-    }
-
-    /* Окно чата должно занимать всё оставшееся место */
-    .chat-window, main, .chat-area {
-        width: 100% !important;
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* Исправляем поле ввода, чтобы оно не улетало вправо */
-    .input-area, .message-form {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        padding: 10px !important;
-        z-index: 1000;
-    }
-}
-
-/* 4. Фикс для картинок и кнопок, чтобы не вылезали */
-img, button, input {
-    max-width: 100%;
+.chat-header {
+    z-index: 500;
 }
