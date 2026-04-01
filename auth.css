@@ -438,14 +438,14 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-    /* Safe area для notch/island */
+
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
 }
 
-/* ── Background orbs ── */
+
 .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
 .orb {
@@ -483,7 +483,7 @@ body {
     to   { transform: translate(-20px, -30px) scale(1.08); }
 }
 
-/* ── Wrapper ── */
+
 .auth-wrapper {
     width: 100%;
     min-height: 100vh;
@@ -496,7 +496,7 @@ body {
     z-index: 1;
 }
 
-/* ── Card ── */
+
 .auth-container {
     width: 100%;
     max-width: 400px;
@@ -516,7 +516,7 @@ body {
     to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ── Card header ── */
+
 .card-header {
     padding: 36px 32px 28px;
     background: linear-gradient(160deg, rgba(167,139,250,0.08) 0%, rgba(91,140,255,0.05) 100%);
@@ -534,7 +534,7 @@ body {
     background: linear-gradient(90deg, var(--accent-3), var(--accent-2), var(--accent));
 }
 
-/* ── Logo ── */
+
 .logo-wrap {
     position: relative;
     width: 72px;
@@ -587,7 +587,7 @@ body {
     line-height: 1.5;
 }
 
-/* ── Card body ── */
+
 .card-body {
     padding: 28px 32px 32px;
     display: flex;
@@ -595,7 +595,7 @@ body {
     gap: 0;
 }
 
-/* ── Field group ── */
+
 .field-group {
     margin-bottom: 14px;
 }
@@ -634,17 +634,17 @@ body {
     border: 1px solid var(--border);
     background: var(--bg-2);
     color: var(--text-hi);
-    font-size: 16px; /* 16px предотвращает авто-зум на iOS */
+    font-size: 16px; /
     font-family: 'Syne', sans-serif;
     transition: var(--t);
     outline: none;
     -webkit-appearance: none;
     appearance: none;
-    /* Убираем авто-заливку браузера */
+
     -webkit-autofill: none;
 }
 
-/* Стили для автозаполнения браузера */
+
 .input-wrap input:-webkit-autofill,
 .input-wrap input:-webkit-autofill:hover,
 .input-wrap input:-webkit-autofill:focus {
@@ -668,7 +668,6 @@ body {
     color: var(--accent-2);
 }
 
-/* ── fieldWrapper animation ── */
 .fieldWrapper {
     max-height: 80px;
     opacity: 1;
@@ -688,7 +687,7 @@ body {
     pointer-events: none;
 }
 
-/* ── Submit button ── */
+
 .submit-btn {
     width: 100%;
     margin-top: 8px;
@@ -713,7 +712,7 @@ body {
     -webkit-appearance: none;
     appearance: none;
     touch-action: manipulation;
-    /* Минимальный размер для удобного касания */
+
     min-height: 48px;
 }
 
@@ -749,7 +748,7 @@ body {
     transform: translateX(4px);
 }
 
-/* ── Toggle text ── */
+
 .toggle-text {
     margin-top: 20px;
     text-align: center;
@@ -763,7 +762,7 @@ body {
     font-weight: 600;
     transition: var(--t);
     cursor: pointer;
-    /* Увеличиваем зону касания */
+
     display: inline-block;
     padding: 4px 2px;
 }
@@ -773,7 +772,7 @@ body {
     text-decoration: underline;
 }
 
-/* ── Mobile ── */
+
 @media (max-width: 480px) {
     .auth-wrapper {
         padding: 16px;
@@ -826,7 +825,7 @@ body {
     }
 }
 
-/* ── Landscape на маленьких экранах ── */
+
 @media (max-height: 600px) and (orientation: landscape) {
     .auth-wrapper {
         align-items: flex-start;

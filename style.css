@@ -517,7 +517,7 @@ body {
     background: var(--bg-0);
     color: var(--text-hi);
     overflow: hidden;
-    /* Safe area для notch/Dynamic Island */
+
     padding-top: env(safe-area-inset-top);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
@@ -542,7 +542,7 @@ body::after {
     background: radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%);
 }
 
-/* ── App layout ── */
+
 .app-container {
     display: flex;
     height: 100vh;
@@ -551,7 +551,7 @@ body::after {
     z-index: 1;
 }
 
-/* ── Sidebar overlay (mobile) ── */
+
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -566,7 +566,7 @@ body::after {
     display: block;
 }
 
-/* ── Sidebar ── */
+
 .sidebar {
     width: 0;
     height: 100vh;
@@ -585,7 +585,7 @@ body::after {
     width: 258px;
 }
 
-/* На мобильных — поверх контента */
+
 @media (max-width: 600px) {
     .sidebar {
         position: fixed;
@@ -602,7 +602,7 @@ body::after {
     }
 }
 
-/* ── New chat button ── */
+
 .new-chat-btn {
     flex-shrink: 0;
     margin: 18px 14px 10px;
@@ -622,7 +622,7 @@ body::after {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* ── Chat list ── */
+
 .chat-list {
     flex: 1;
     overflow-y: auto;
@@ -653,7 +653,7 @@ body::after {
     border: 1px solid transparent;
     display: flex;
     align-items: center;
-    min-height: 44px; /* удобная зона касания */
+    min-height: 44px;
 }
 
 .chat-item:hover, .chat-item:active {
@@ -668,7 +668,7 @@ body::after {
     font-weight: 600;
 }
 
-/* ── Chat area ── */
+
 .chat {
     flex: 1;
     min-width: 0;
@@ -678,7 +678,7 @@ body::after {
     overflow: hidden;
 }
 
-/* ── Header ── */
+
 .chat-header {
     position: relative;
     display: flex;
@@ -698,7 +698,7 @@ body::after {
     letter-spacing: 0.14em;
     color: var(--text-hi);
     text-transform: uppercase;
-    /* Не выходить за кнопки */
+
     max-width: calc(100% - 100px);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -709,7 +709,7 @@ body::after {
 #chatTitle::before { content: '[ '; color: var(--accent); opacity: 0.7; }
 #chatTitle::after  { content: ' ]'; color: var(--accent); opacity: 0.7; }
 
-/* ── Menu & logout buttons ── */
+
 .menu-btn {
     position: absolute;
     left: 12px;
@@ -746,7 +746,7 @@ body::after {
     background-color: rgba(255,60,60,0.08);
 }
 
-/* ── Messages ── */
+
 #messages {
     flex: 1;
     overflow-y: auto;
@@ -775,7 +775,6 @@ body::after {
     color: var(--text-lo);
 }
 
-/* ── Message rows ── */
 .message-row {
     display: flex;
     align-items: flex-end;
@@ -790,7 +789,6 @@ body::after {
 .message-row.user { justify-content: flex-end; }
 .message-row.ai   { justify-content: flex-start; }
 
-/* ── Avatar ── */
 .avatar {
     width: 32px;
     height: 32px;
@@ -807,7 +805,7 @@ body::after {
     box-shadow: 0 0 12px rgba(91,140,255,0.15);
 }
 
-/* ── Bubbles ── */
+
 .message-content {
     font-size: 14px;
     line-height: 1.68;
@@ -846,7 +844,7 @@ body::after {
     opacity: 0.3;
 }
 
-/* ── Typing dots ── */
+
 .typing-dots {
     display: flex;
     gap: 5px;
@@ -867,7 +865,7 @@ body::after {
     40%            { transform: translateY(-7px); opacity: 1;    }
 }
 
-/* ── Input area ── */
+
 .input {
     display: flex;
     align-items: center;
@@ -906,7 +904,6 @@ body::after {
 
 .input input::placeholder { color: var(--text-lo); }
 
-/* Автозаполнение браузера */
 .input input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px var(--bg-2) inset;
     -webkit-text-fill-color: var(--text-hi);
@@ -923,7 +920,7 @@ body::after {
     cursor: not-allowed;
 }
 
-/* ── Send button ── */
+
 .send {
     width: 48px;
     height: 48px;
@@ -955,7 +952,6 @@ body::after {
     box-shadow: none;
 }
 
-/* ── Copy button ── */
 .copy {
     position: absolute;
     top: 8px;
@@ -999,18 +995,14 @@ body::after {
     -webkit-overflow-scrolling: touch;
 }
 
-/* ════════════════════════
-   МЕДИА-ЗАПРОСЫ
-════════════════════════ */
 
-/* Планшет */
 @media (max-width: 860px) {
     #messages      { padding: 20px 8%; }
     .input         { padding: 12px 8%; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
     .input::before { left: 8%; right: 8%; }
 }
 
-/* Мобильный */
+
 @media (max-width: 600px) {
     #messages {
         padding: 16px 12px;
@@ -1055,7 +1047,6 @@ body::after {
         font-size: 12px;
     }
 
-    /* Аватар чуть меньше */
     .avatar {
         width: 28px;
         height: 28px;
@@ -1066,7 +1057,7 @@ body::after {
     }
 }
 
-/* Очень маленькие экраны */
+
 @media (max-width: 360px) {
     #messages { padding: 12px 10px; }
     .input    { padding: 8px 10px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
@@ -1074,7 +1065,7 @@ body::after {
     .message-content { font-size: 13px; padding: 9px 12px; }
 }
 
-/* Landscape на маленьких экранах */
+
 @media (max-height: 500px) and (orientation: landscape) {
     .chat-header { height: 44px; }
     #messages    { padding: 10px 6%; }
