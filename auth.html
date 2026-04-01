@@ -1,19 +1,114 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>AI Bot</title>-->
+<!--    <link rel="stylesheet" href="auth.css">-->
+<!--    <link rel="icon" type="image/png" href="ai.png">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--    <div class="bg-orbs">-->
+<!--        <div class="orb orb-1"></div>-->
+<!--        <div class="orb orb-2"></div>-->
+<!--        <div class="orb orb-3"></div>-->
+<!--    </div>-->
+
+<!--<div class="auth-wrapper">-->
+<!--    <div class="auth-container" id="authContainer">-->
+
+<!--        <div class="card-header">-->
+<!--            <div class="logo-wrap">-->
+<!--                <img src="ai.png" alt="AI Bot" class="logo-img">-->
+<!--                <div class="logo-glow"></div>-->
+<!--            </div>-->
+<!--            <h1 class="brand-name">AI<span>Bot</span></h1>-->
+<!--            <p class="brand-sub" id="brandSub">Create your account to get started</p>-->
+<!--        </div>-->
+
+<!--        <div class="card-body">-->
+<!--            <div id="userNameWrapper" class="field-group fieldWrapper">-->
+<!--                <label for="userName">Username</label>-->
+<!--                <div class="input-wrap">-->
+<!--                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">-->
+<!--                        <circle cx="12" cy="8" r="4"/>-->
+<!--                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>-->
+<!--                    </svg>-->
+<!--                    <input type="text" id="userName" placeholder="Enter your username"/>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="field-group">-->
+<!--                <label for="email">Email</label>-->
+<!--                <div class="input-wrap">-->
+<!--                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">-->
+<!--                        <rect x="2" y="4" width="20" height="16" rx="2"/>-->
+<!--                        <path d="m2 7 10 7 10-7"/>-->
+<!--                    </svg>-->
+<!--                    <input type="email" id="email" placeholder="you@example.com"/>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="field-group">-->
+<!--                <label for="password">Password</label>-->
+<!--                <div class="input-wrap">-->
+<!--                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">-->
+<!--                        <rect x="3" y="11" width="18" height="11" rx="2"/>-->
+<!--                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>-->
+<!--                    </svg>-->
+
+<!--                    <input type="password" id="password" placeholder="••••••••"/>-->
+
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <button id="authBtn" class="submit-btn" onclick="handleSubmit()">-->
+<!--                <span id="btnText">Create Account</span>-->
+<!--                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">-->
+<!--                    <path d="M5 12h14M12 5l7 7-7 7"/>-->
+<!--                </svg>-->
+<!--            </button>-->
+
+<!--            <p class="toggle-text" id="toggleText1" style="display: none;">-->
+<!--                Don't have an account?-->
+<!--                <a href="#" onclick="toggleMode(event)">Register</a>-->
+<!--            </p>-->
+
+
+<!--            <p class="toggle-text" id="toggleText">-->
+<!--                Already have an account?-->
+<!--                <a href="#" onclick="toggleMode(event)">Sign in</a>-->
+<!--            </p>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="app.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>AI Bot</title>
     <link rel="stylesheet" href="auth.css">
     <link rel="icon" type="image/png" href="ai.png">
 </head>
 <body>
 
-    <div class="bg-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
 
 <div class="auth-wrapper">
     <div class="auth-container" id="authContainer">
@@ -35,7 +130,7 @@
                         <circle cx="12" cy="8" r="4"/>
                         <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
                     </svg>
-                    <input type="text" id="userName" placeholder="Enter your username"/>
+                    <input type="text" id="userName" placeholder="Enter your username" autocomplete="username"/>
                 </div>
             </div>
 
@@ -46,7 +141,7 @@
                         <rect x="2" y="4" width="20" height="16" rx="2"/>
                         <path d="m2 7 10 7 10-7"/>
                     </svg>
-                    <input type="email" id="email" placeholder="you@example.com"/>
+                    <input type="email" id="email" placeholder="you@example.com" autocomplete="email" inputmode="email"/>
                 </div>
             </div>
 
@@ -57,9 +152,7 @@
                         <rect x="3" y="11" width="18" height="11" rx="2"/>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                     </svg>
-
-                    <input type="password" id="password" placeholder="••••••••"/>
-
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"/>
                 </div>
             </div>
 
@@ -74,7 +167,6 @@
                 Don't have an account?
                 <a href="#" onclick="toggleMode(event)">Register</a>
             </p>
-
 
             <p class="toggle-text" id="toggleText">
                 Already have an account?
