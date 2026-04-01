@@ -209,8 +209,10 @@ async function selectChat(id, title) {
 function toggleSidebar() {
 
     const sidebar = document.querySelector(".sidebar");
-
+    const overlay = document.querySelector(".sidebar-overlay");
     sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+
 }
 
 async function deleteChat(chatId, event) {

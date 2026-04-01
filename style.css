@@ -1071,3 +1071,13 @@ body::after {
     #messages    { padding: 10px 6%; }
     .input       { padding: 8px 6%; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
 }
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.chat-header {
+    z-index: 500;
+}
