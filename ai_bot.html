@@ -1,9 +1,58 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>AI Bot</title>-->
+
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--    <link rel="icon" type="image/png" href="ai.png">-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="app-container">-->
+
+
+<!--    <div class="sidebar">-->
+<!--        <button class="new-chat-btn" onclick="createNewChat()"></button>-->
+<!--        <div id="chatList" class="chat-list"></div>-->
+<!--    </div>-->
+
+
+<!--    <div class="chat">-->
+
+<!--        <div class="chat-header">-->
+<!--            <button class="menu-btn" onclick="toggleSidebar()"></button>-->
+<!--            <h1 id="chatTitle">ChatBot</h1>-->
+<!--            <button class="logout" onclick="logout()"></button>-->
+<!--        </div>-->
+
+<!--        <div id="messages" class="messages"></div>-->
+
+<!--        <div class="input">-->
+<!--            <input id="userInput" placeholder="Enter your message" disabled>-->
+<!--            <button id="sendBtn" class="send" onclick="sendMessage()" disabled></button>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<script src="AI_Bot.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>AI Bot</title>
-
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="ai.png">
 </head>
@@ -12,18 +61,16 @@
 
 <div class="app-container">
 
-
     <div class="sidebar">
         <button class="new-chat-btn" onclick="createNewChat()"></button>
         <div id="chatList" class="chat-list"></div>
     </div>
 
-
     <div class="chat">
 
         <div class="chat-header">
             <button class="menu-btn" onclick="toggleSidebar()"></button>
-            <h1 id="chatTitle">ChatBot</h1>
+            <h1 id="chatTitle">[ NEW CHAT ]</h1>
             <button class="logout" onclick="logout()"></button>
         </div>
 
@@ -32,7 +79,6 @@
         <div class="input">
             <input id="userInput" placeholder="Enter your message" disabled>
             <button id="sendBtn" class="send" onclick="sendMessage()" disabled></button>
-
         </div>
 
     </div>
