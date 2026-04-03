@@ -616,6 +616,13 @@ body::after {
     transition: var(--t);
 }
 
+
+@media (max-width: 600px) {
+    .new-chat-btn {
+        margin-top: calc(100% - 200px);
+    }
+}
+
 .new-chat-btn:hover {
     background-color: rgba(91,140,255,0.14);
     border-color: var(--accent);
@@ -1072,7 +1079,6 @@ body::after {
     .input       { padding: 8px 6%; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
 }
 .menu-btn {
-    position: fixed;
     top: 10px;
     left: 10px;
     z-index: 1000;
