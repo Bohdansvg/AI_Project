@@ -630,6 +630,24 @@ body::after {
 }
 
 
+.delete {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+
+
 .chat-list {
     flex: 1;
     overflow-y: auto;

@@ -140,7 +140,7 @@ function renderChatList(chats) {
         titleSpan.textContent = chat.title;
         titleSpan.style.flex = "1"
         titleSpan.style.overflow = "hidden";
-        titleSpan.textOverflow = "ellipsis";
+        titleSpan.style.textOverflow = "ellipsis";
         titleSpan.style.whiteSpace = "nowrap";
 
         const deleteBtn = document.createElement("button");
