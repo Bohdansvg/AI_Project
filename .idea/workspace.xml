@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
-    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="" />
+    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="">
+      <change beforePath="$PROJECT_DIR$/AI_Bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/AI_Bot.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +153,7 @@
       <workItem from="1774720963663" duration="5946000" />
       <workItem from="1774972983652" duration="3084000" />
       <workItem from="1775031237382" duration="6345000" />
-      <workItem from="1775235785188" duration="1414000" />
+      <workItem from="1775235785188" duration="1603000" />
     </task>
     <servers />
   </component>
