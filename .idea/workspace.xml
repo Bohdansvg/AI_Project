@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai_bot.html" beforeDir="false" afterPath="$PROJECT_DIR$/ai_bot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
-    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="">
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
+    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +22,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/style.css">
-      <ranges>
-        <range start1="617" end1="617" start2="617" end2="624" changelist="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" />
-        <range start1="1074" end1="1075" start2="1081" end2="1081" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
-      </ranges>
-    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -165,7 +151,7 @@
       <workItem from="1774720963663" duration="5946000" />
       <workItem from="1774972983652" duration="3084000" />
       <workItem from="1775031237382" duration="6345000" />
-      <workItem from="1775235785188" duration="1082000" />
+      <workItem from="1775235785188" duration="1414000" />
     </task>
     <servers />
   </component>
