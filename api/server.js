@@ -140,7 +140,7 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
         const dbContent = message || (hasImages ? "[Image attached]" : "");
         const dbImages = hasImages ? JSON.stringify(images) : null
         await pool.query(
-            "INSERT INTO messages (chat_id,role,content,images) VALUES ($1,$2,$3)",
+            "INSERT INTO messages (chat_id,role,content,images) VALUES ($1,$2,$3,$4)",
             [chatId, "user", dbContent, dbImages]
         );
 
