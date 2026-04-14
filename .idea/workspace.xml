@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
     <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="">
       <change beforePath="$PROJECT_DIR$/AI_Bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/AI_Bot.js" afterDir="false" />
     </list>

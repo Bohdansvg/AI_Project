@@ -112,7 +112,7 @@ function addMessage(text, type, images = []) {
 
     images.forEach(img => {
         const imgEl = document.createElement("img");
-        imgEl.src = `data:${img.mimeType};base64,${img.content}`;
+        imgEl.src = `data:${img.mimeType};base64,${img.content || img.data}`;
         imgEl.style.cssText = "max-width:220px;max-height:220px;border-radius:8px;display:block;margin-top:6px;";
         content.appendChild(imgEl);
     });
