@@ -27,6 +27,9 @@ pool.query("SELECT NOW()", (err, res) => {
     }
 });
 
+pool.query("ALTER TABLE messages ADD COLUMN IF NOT EXISTS images JSONB DEFAULT NULL", (err) =>{
+    if (err) console.error("Database connection error:", err.stack);
+})
 // ============================
 // GET CHATS
 // ============================
@@ -89,7 +92,7 @@ app.get("/api/chats/:id/messages", verifyToken, async (req, res) => {
         }
 
         const result = await pool.query(
-            "SELECT role,content FROM messages WHERE chat_id=$1 ORDER BY created_at ASC",
+            "SELECT role,content, images FROM messages WHERE chat_id=$1 ORDER BY created_at ASC",
             [chatId]
         );
 
@@ -135,9 +138,10 @@ app.post("/api/chats/:id/messages", verifyToken, async (req, res) => {
 
         // сохраняем сообщение пользователя
         const dbContent = message || (hasImages ? "[Image attached]" : "");
+        const dbImages = hasImages ? JSON.stringify(images) : null
         await pool.query(
-            "INSERT INTO messages (chat_id,role,content) VALUES ($1,$2,$3)",
-            [chatId, "user", dbContent]
+            "INSERT INTO messages (chat_id,role,content,images) VALUES ($1,$2,$3)",
+            [chatId, "user", dbContent, dbImages]
         );
 
         // генерируем новый title
