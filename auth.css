@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inconsolata:wght@400;500&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-grad: linear-gradient(145deg, #c8e8ff 0%, #a8d4f5 35%, #bdd4f8 65%, #d0c8f8 100%);
+    --accent: #2b7fff;
+    --accent-2: #7c5cfc;
+    --accent-3: #f472b6;
+    --text-hi: #0f172a;
+    --text-mid: #4a5880;
+    --text-lo: #9baac8;
+    --radius: 20px;
+    --radius-sm: 12px;
+    --radius-xs: 8px;
+    --t: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --glass-card: rgba(255, 255, 255, 0.52);
+    --glass-border: rgba(255, 255, 255, 0.80);
+    --glass-blur: blur(32px) saturate(1.8);
+    --glass-header: rgba(255, 255, 255, 0.30);
+    --glass-input: rgba(255, 255, 255, 0.55);
+    --glass-input-f: rgba(255, 255, 255, 0.75);
+    --glass-btn: rgba(255, 255, 255, 0.40);
+    --glass-btn-h: rgba(255, 255, 255, 0.62);
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    min-height: 100dvh;
+    background: var(--bg-grad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ── Orbs ─────────────────────────────────────────────────── */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    right: -150px;
+    background: radial-gradient(circle, rgba(120, 180, 255, 0.55) 0%, transparent 65%);
+    animation: drift1 12s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    bottom: -180px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(160, 130, 255, 0.40) 0%, transparent 65%);
+    animation: drift2 15s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.18) 0%, transparent 65%);
+    animation: drift1 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift1 {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(30px, 20px) scale(1.06);
+    }
+}
+
+@keyframes drift2 {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(-20px, -30px) scale(1.09);
+    }
+}
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+.auth-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+
+    background: var(--glass-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+
+    box-shadow: 0 32px 80px rgba(80, 120, 200, 0.20),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -1px 0 rgba(180, 200, 255, 0.18) inset,
+    1px 0 0 rgba(255, 255, 255, 0.70) inset,
+    -1px 0 0 rgba(255, 255, 255, 0.70) inset;
+
+    animation: cardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    overflow: hidden;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.card-header {
+    padding: 36px 32px 28px;
+    background: var(--glass-header);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.60);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.98), transparent);
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.logo-wrap {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+}
+
+.logo-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 6px 20px rgba(80, 120, 200, 0.20);
+}
+
+.logo-glow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120, 160, 255, 0.35) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-hi);
+    margin-bottom: 6px;
+}
+
+.brand-name span {
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brand-sub {
+    font-size: 13px;
+    color: var(--text-mid);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+.card-body {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.field-group {
+    margin-bottom: 14px;
+}
+
+.field-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 7px;
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.field-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--text-lo);
+    pointer-events: none;
+    transition: color var(--t);
+    z-index: 1;
+}
+
+.input-wrap input {
+    width: 100%;
+    padding: 13px 16px 13px 42px;
+    border-radius: var(--radius-xs);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: var(--glass-input);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--text-hi);
+    font-size: 16px;
+    font-family: 'Syne', sans-serif;
+    transition: var(--t);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.90) inset, 0 2px 8px rgba(100, 140, 220, 0.10);
+}
+
+.input-wrap input:-webkit-autofill,
+.input-wrap input:-webkit-autofill:hover,
+.input-wrap input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(220, 235, 255, 0.95) inset;
+    -webkit-text-fill-color: var(--text-hi);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-wrap input::placeholder {
+    color: var(--text-lo);
+}
+
+.input-wrap input:focus {
+    border-color: rgba(43, 127, 255, 0.45);
+    background: var(--glass-input-f);
+    box-shadow: 0 0 0 3px rgba(43, 127, 255, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 2px 12px rgba(100, 140, 220, 0.15);
+}
+
+.input-wrap input:focus ~ .field-icon,
+.input-wrap:focus-within .field-icon {
+    color: var(--accent);
+}
+
+/* ── fieldWrapper animation ───────────────────────────────── */
+.fieldWrapper {
+    max-height: 80px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    margin 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container.login-mode .fieldWrapper {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* ── Submit button ────────────────────────────────────────── */
+.submit-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 20px;
+    background: var(--glass-btn);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--text-hi);
+    border: 1px solid rgba(255, 255, 255, 0.80);
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--t);
+    position: relative;
+    overflow: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+    min-height: 48px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -1px 0 rgba(180, 200, 240, 0.20) inset,
+    0 4px 16px rgba(80, 120, 200, 0.14);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.submit-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0);
+    transition: background var(--t);
+}
+
+.submit-btn:hover::after {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.submit-btn:active::after {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.submit-btn:hover {
+    background: var(--glass-btn-h);
+    border-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.98) inset,
+    0 -1px 0 rgba(180, 200, 240, 0.20) inset,
+    0 10px 28px rgba(80, 120, 200, 0.22);
+}
+
+.submit-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.90) inset,
+    0 2px 8px rgba(80, 120, 200, 0.12);
+}
+
+.btn-arrow {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--t);
+    flex-shrink: 0;
+}
+
+.submit-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Toggle text ──────────────────────────────────────────── */
+.toggle-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-mid);
+}
+
+.toggle-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--t);
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 2px;
+}
+
+.toggle-text a:hover {
+    color: var(--accent-2);
+    text-decoration: underline;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .auth-wrapper {
+        padding: 16px;
+        align-items: center;
+    }
+
+    .auth-container {
+        border-radius: 16px;
+    }
+
+    .card-header {
+        padding: 28px 24px 22px;
+    }
+
+    .logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .logo-wrap {
+        width: 60px;
+        height: 60px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 22px 24px 28px;
+    }
+
+    .input-wrap input {
+        font-size: 16px;
+        padding: 14px 16px 14px 42px;
+    }
+
+    .submit-btn {
+        padding: 15px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .card-header {
+        padding: 22px 18px 18px;
+    }
+
+    .card-body {
+        padding: 18px 18px 22px;
+    }
+
+    .input-wrap input {
+        padding: 12px 14px 12px 40px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .auth-wrapper {
+        align-items: flex-start;
+        padding: 12px 20px;
+    }
+
+    .card-header {
+        padding: 16px 24px 14px;
+    }
+
+    .logo-wrap {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 8px;
+    }
+
+    .logo-img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+
+    .brand-sub {
+        font-size: 11px;
+    }
+
+    .card-body {
+        padding: 14px 24px 18px;
+    }
+
+    .field-group {
+        margin-bottom: 8px;
+    }
+
+    .input-wrap input {
+        padding: 10px 14px 10px 40px;
+    }
+
+    .submit-btn {
+        margin-top: 4px;
+        padding: 11px 16px;
+        min-height: 44px;
+    }
+
+    .toggle-text {
+        margin-top: 10px;
+    }
+}

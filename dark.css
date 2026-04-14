@@ -1,0 +1,226 @@
+body.dark-mode {
+    font-family: 'Syne', sans-serif;
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    background: #080810;
+    color: var(--text-hi);
+    overflow: hidden;
+    padding-top:   env(safe-area-inset-top);
+    padding-left:  env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    transition: background 0.6s cubic-bezier(.4,0,.2,1);
+}
+
+body.dark-mode::before,
+body.dark-mode::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    opacity: 0.45;
+    animation: darkBlob 12s ease-in-out infinite alternate;
+}
+
+body.dark-mode::before {
+    width: 500px; height: 500px;
+    top: -120px; right: -80px;
+    background: radial-gradient(circle, #1a1a6e 0%, #0d0d40 50%, transparent 75%);
+    animation-delay: 0s;
+}
+
+body.dark-mode::after {
+    width: 420px; height: 420px;
+    bottom: -100px; left: -60px;
+    background: radial-gradient(circle, #0a2a4a 0%, #051520 50%, transparent 75%);
+    animation-delay: -6s;
+}
+
+@keyframes darkBlob {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(20px, -18px) scale(1.08); }
+}
+
+
+body.dark-mode .sidebar {
+    background: rgba(10, 10, 25, 0.55);
+    backdrop-filter: blur(28px) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(1.1);
+    border-right: 1px solid rgba(80, 100, 180, 0.18);
+    box-shadow:
+            inset 1px 0 0 rgba(120, 140, 255, 0.08),
+            4px 0 24px rgba(0, 0, 0, 0.45);
+    transition: width 0.3s cubic-bezier(.4,0,.2,1),
+    background 0.5s ease,
+    backdrop-filter 0.5s ease;
+}
+
+
+body.dark-mode .chat-header {
+    background: rgba(8, 8, 20, 0.50);
+    backdrop-filter: blur(24px) saturate(1.6);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    border-bottom: 1px solid rgba(80, 100, 200, 0.15);
+    box-shadow:
+            0 1px 0 rgba(100, 120, 255, 0.08) inset,
+            0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+body.dark-mode .input {
+    background: rgba(8, 8, 20, 0.45);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-top: 1px solid rgba(80, 100, 200, 0.12);
+}
+
+body.dark-mode .input::before {
+    background: rgba(8, 8, 20, 0.45);
+}
+
+
+body.dark-mode .input input {
+    background: rgba(15, 15, 35, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(80, 100, 180, 0.22);
+    color: rgba(210, 220, 255, 0.92);
+    box-shadow:
+            inset 0 1px 0 rgba(120, 140, 255, 0.08),
+            inset 0 0 0 1px rgba(60, 80, 160, 0.10),
+            0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.dark-mode .input input:focus {
+    border-color: rgba(100, 130, 255, 0.40);
+    background: rgba(18, 18, 42, 0.80);
+    box-shadow:
+            0 0 0 3px rgba(80, 100, 220, 0.15),
+            inset 0 1px 0 rgba(140, 160, 255, 0.10),
+            0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .input input::placeholder {
+    color: rgba(120, 140, 200, 0.45);
+}
+
+
+body.dark-mode .message-row.ai .message-content {
+    background: rgba(15, 15, 35, 0.60);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid rgba(80, 100, 180, 0.18);
+    color: rgba(200, 215, 255, 0.90);
+    box-shadow:
+            inset 0 1px 0 rgba(120, 140, 255, 0.07),
+            0 4px 18px rgba(0, 0, 0, 0.28);
+    transition: box-shadow 0.25s ease;
+}
+
+body.dark-mode .message-row.ai .message-content:hover {
+    box-shadow:
+            inset 0 1px 0 rgba(120, 140, 255, 0.12),
+            0 6px 24px rgba(0, 0, 0, 0.38);
+}
+
+body.dark-mode .message-row.user .message-content {
+    background: linear-gradient(135deg,
+    rgba(30, 40, 100, 0.80) 0%,
+    rgba(20, 30, 80, 0.75) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(80, 110, 200, 0.25);
+    color: rgba(220, 230, 255, 0.95);
+    box-shadow:
+            inset 0 1px 0 rgba(140, 160, 255, 0.12),
+            0 4px 18px rgba(0, 0, 0, 0.32);
+}
+
+
+body.dark-mode .chat-item {
+    color: rgba(160, 180, 230, 0.75);
+    border: 1px solid transparent;
+    transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+body.dark-mode .chat-item:hover {
+    background: rgba(30, 35, 70, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(80, 100, 180, 0.20);
+    color: rgba(200, 215, 255, 0.90);
+}
+
+body.dark-mode .chat-item.active {
+    background: rgba(40, 55, 120, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(80, 120, 220, 0.35);
+    color: rgba(160, 190, 255, 0.95);
+    box-shadow: inset 0 1px 0 rgba(120, 150, 255, 0.10);
+}
+
+
+body.dark-mode .new-chat-btn {
+    background: rgba(20, 22, 50, 0.60) url("new-chat.png") center/20px no-repeat;
+    border: 1px solid rgba(80, 100, 180, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 rgba(120, 140, 255, 0.08);
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.dark-mode .new-chat-btn:hover {
+    background-color: rgba(30, 35, 80, 0.75);
+    border-color: rgba(100, 130, 220, 0.40);
+    box-shadow:
+            inset 0 1px 0 rgba(140, 160, 255, 0.12),
+            0 0 16px rgba(60, 80, 200, 0.20);
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(15, 15, 35, 0.50);
+    border: 1px solid rgba(80, 100, 180, 0.20);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: rgba(25, 25, 55, 0.70);
+    border-color: rgba(100, 130, 220, 0.35);
+    box-shadow: 0 0 14px rgba(60, 80, 200, 0.18);
+}
+
+
+body.dark-mode .sidebar-footer {
+    border-top: 1px solid rgba(80, 100, 180, 0.12);
+}
+
+body.dark-mode .chat-list::-webkit-scrollbar-thumb {
+    background: rgba(80, 100, 180, 0.25);
+}
+
+body.dark-mode .messages::-webkit-scrollbar-thumb {
+    background: rgba(80, 100, 180, 0.20);
+}
+
+
+body {
+    transition:
+            background 0.55s cubic-bezier(.4,0,.2,1),
+            color 0.35s ease;
+}
+
+body .sidebar,
+body .chat-header,
+body .input,
+body .message-content {
+    transition:
+            background 0.45s cubic-bezier(.4,0,.2,1),
+            border-color 0.45s ease,
+            backdrop-filter 0.45s ease,
+            box-shadow 0.45s ease;
+}

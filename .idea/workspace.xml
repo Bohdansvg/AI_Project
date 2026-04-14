@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="391KsFBzJh0B4KkE4NihucT23to" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.AI_Bot.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp Laptop/WebstormProjects/JS_Course/ai_bot&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2025.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\HPLAPT~1\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="213f3678-5dd2-456f-a636-3daece931817" reportId="JS_Course/qodana/2026-03-21" />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\api" />
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course" />
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\ai_bot" />
+      <recent name="C:\Users\Hp Laptop\WebstormProjects\JS_Course\les2\public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="" />
+      <created>1769858343253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769858343253</updated>
+      <workItem from="1769858345246" duration="526000" />
+      <workItem from="1769858908523" duration="2201000" />
+      <workItem from="1770118347199" duration="3093000" />
+      <workItem from="1770287931975" duration="6132000" />
+      <workItem from="1770310749026" duration="3396000" />
+      <workItem from="1770450661955" duration="2907000" />
+      <workItem from="1770472934079" duration="3056000" />
+      <workItem from="1770721305031" duration="3492000" />
+      <workItem from="1770977215452" duration="1995000" />
+      <workItem from="1770979296413" duration="1216000" />
+      <workItem from="1771232315621" duration="102000" />
+      <workItem from="1771232572906" duration="4637000" />
+      <workItem from="1771257639349" duration="827000" />
+      <workItem from="1771258487255" duration="57000" />
+      <workItem from="1771261247512" duration="5868000" />
+      <workItem from="1771330690793" duration="792000" />
+      <workItem from="1771332812647" duration="1629000" />
+      <workItem from="1771405308372" duration="2973000" />
+      <workItem from="1771519911792" duration="1999000" />
+      <workItem from="1771521947594" duration="4375000" />
+      <workItem from="1771526392913" duration="334000" />
+      <workItem from="1771615514124" duration="377000" />
+      <workItem from="1771671830799" duration="2957000" />
+      <workItem from="1771928370223" duration="1395000" />
+      <workItem from="1771934501796" duration="3395000" />
+      <workItem from="1772272593283" duration="3556000" />
+      <workItem from="1772471455848" duration="2470000" />
+      <workItem from="1772529187881" duration="368000" />
+      <workItem from="1772547342021" duration="232000" />
+      <workItem from="1772557214321" duration="6544000" />
+      <workItem from="1772865236978" duration="4091000" />
+      <workItem from="1772869384999" duration="537000" />
+      <workItem from="1772874073290" duration="3866000" />
+      <workItem from="1773073546431" duration="5428000" />
+      <workItem from="1773334722695" duration="3802000" />
+      <workItem from="1773394326615" duration="5849000" />
+      <workItem from="1773680653980" duration="84000" />
+      <workItem from="1773680760391" duration="336000" />
+      <workItem from="1773759644133" duration="3472000" />
+      <workItem from="1773821189366" duration="766000" />
+      <workItem from="1774072093595" duration="1615000" />
+      <workItem from="1774079878723" duration="3151000" />
+      <workItem from="1774083065630" duration="622000" />
+      <workItem from="1774083767704" duration="71000" />
+      <workItem from="1774381845884" duration="4029000" />
+      <workItem from="1774550557940" duration="577000" />
+      <workItem from="1774551171218" duration="969000" />
+      <workItem from="1774552184618" duration="1832000" />
+      <workItem from="1774554048651" duration="151000" />
+      <workItem from="1774554226847" duration="2552000" />
+      <workItem from="1774556815644" duration="579000" />
+      <workItem from="1774557408539" duration="435000" />
+      <workItem from="1774557854888" duration="992000" />
+      <workItem from="1774558872922" duration="106000" />
+      <workItem from="1774558991722" duration="166000" />
+      <workItem from="1774559198648" duration="208000" />
+      <workItem from="1774720963663" duration="5946000" />
+      <workItem from="1774972983652" duration="3084000" />
+      <workItem from="1775031237382" duration="6345000" />
+      <workItem from="1775235785188" duration="2857000" />
+      <workItem from="1775388625839" duration="5895000" />
+      <workItem from="1775406328086" duration="3620000" />
+      <workItem from="1775409995058" duration="145000" />
+      <workItem from="1775645024286" duration="2000" />
+      <workItem from="1775652306318" duration="41000" />
+      <workItem from="1775653856584" duration="141000" />
+      <workItem from="1775667668324" duration="3709000" />
+      <workItem from="1775922609308" duration="2121000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="cc82a7b8-44b0-4922-b686-a5f463939a8b" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="cc82a7b8-44b0-4922-b686-a5f463939a8b">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
