@@ -309,7 +309,7 @@ async function selectChat(id, title) {
         if (res.ok) {
             const messages = await res.json();
             messages.forEach(msg => {
-                addMessage(" " + msg.content, msg.role, msg.animationFillMode || [])
+                addMessage(" " + msg.content, msg.role, msg.images || [])
             })
         }
 
