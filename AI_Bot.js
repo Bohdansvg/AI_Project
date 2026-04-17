@@ -85,22 +85,48 @@ function updateAttachPreview() {
     }
     preview.innerHTML = "";
     attachedFiles.forEach((f, i) => {
-        const tag = document.createElement("span");
-        tag.className = "attach-tag";
-
-        if (f.isImage) {
-            const thumb = document.createElement("img");
-            thumb.src = `data:${f.mimeType};base64,${f.content}`;
-            thumb.style.cssText = "width:48px;height:48px;object-fit:cover;border-radius:6px;display:block;";
-            tag.appendChild(thumb);
-        } else {
-            tag.textContent = f.name;
-        }
+        const tag = document.createElement("div");
 
         const rm = document.createElement("button");
         rm.textContent = "×";
         rm.className = "attach-tag-remove";
         rm.onclick = () => { attachedFiles.splice(i, 1); updateAttachPreview(); }
+
+        if (f.isImage) {
+            tag.className = "attach-tag attach-tag--image";
+            const thumb = document.createElement("img");
+            thumb.src = `data:${f.mimeType};base64,${f.content}`;
+            tag.appendChild(thumb);
+        } else {
+            tag.className = "attach-tag attach-tag--file";
+
+            const iconDiv = document.createElement("div");
+            iconDiv.className = "attach_tag_icon"
+            iconDiv.innerHTML = `<svg viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2H6a2 2 0 00-2 2v36a2 2 0 002 2h24a2 2 0 002-2V12L22 2z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                <path d="M22 2v8a2 2 0 002 2h8" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="9" y1="21" x2="27" y2="21" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="9" y1="27" x2="27" y2="27" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="9" y1="33" x2="19" y2="33" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>`;
+
+            const info = document.createElement("div");
+            info.className = "attach-tag-info";
+
+            const name = document.createElement("span");
+            name.className = "attach-tag-name";
+            name.textContent = f.name;
+
+            const ext = document.createElement("span");
+            ext.className = "attach-tag-ext";
+            ext.textContent = f.name.split('.').pop().toUpperCase();
+
+            info.appendChild(name);
+            info.appendChild(ext);
+            tag.appendChild(iconDiv);
+            tag.appendChild(info);
+
+        }
         tag.appendChild(rm);
         preview.appendChild(tag);
     })
