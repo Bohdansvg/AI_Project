@@ -1004,23 +1004,80 @@ body::after {
 #attachPreview {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     width: 100%;
     order: -1;
-    padding-bottom: 6px;
+    padding: 8px 0 6px ;
 }
 
 .attach-tag {
     position: relative;
-    padding: 3px 6px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(120, 128, 255, 0.15);
+    border: 1px solid rgba(120, 255, 255, 0.1);
 }
 
-.attach-tag img {
-    display: block;
-    width: 56px;
-    height: 56px;
+.attach-tag--image {
+    width: 80px;
+    height: 80px;
+}
+
+.attach-tag--image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    display: block;
+}
+
+.attach-tag--file {
+   display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px 10px 10px;
+    min-width: 160px;
+    max-width: 220px;
+    height: 64px;
+}
+
+.attach_tag_icon{
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.attach_tag_icon svg{
+    width: 100%;
+    height: 100%;
+}
+
+.attach-tag-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.attach-tag-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.attach-tag-ext {
+    display: inline-block;
+    font-size:  10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(12, 46, 80, 0.7);
+    color: #080810;
+    padding: 2px 6px;
+    align-self: flex-start;
 }
 
 .attach-tag-remove {
