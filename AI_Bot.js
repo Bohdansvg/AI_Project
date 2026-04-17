@@ -72,31 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fileInput.value = "";
     })
 })
-//
-// function updateAttachPreview() {
-//     let preview = document.getElementById("attachPreview")
-//     if(!preview) {
-//         preview = document.createElement("div");
-//         preview.id = "attachPreview";
-//         preview.className = "attachPreview";
-//         const inputArea = document.querySelector(".input")
-//         inputArea.insertBefore(preview, inputArea.querySelector("#userInput"))
-//     }
-//     preview.innerHTML = "";
-//     attachedFiles.forEach((f, i) => {
-//         const tag = document.createElement("span");
-//         tag.className = "attach-tag"
-//         tag.textContent = f.name;
-//         const rm = document.createElement("button");
-//         rm.textContent = "x"
-//         rm.onclick= () => { attachedFiles.splice(i, 1); updateAttachPreview(); }
-//         tag.appendChild(rm)
-//         preview.appendChild(rm)
-//     })
-//     if (attachedFiles.length === 0 && preview.parentNode){
-//         preview.parentNode.removeChild(preview)
-//     }
-// }
+
 
 function updateAttachPreview() {
     let preview = document.getElementById("attachPreview")
