@@ -981,8 +981,47 @@ body::after {
     cursor: not-allowed;
 }
 
-/* ── Attach file preview tags ────────────────────────────── */
-.attach-preview {
+/*!* ── Attach file preview tags ────────────────────────────── *!*/
+/*.attach-preview {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 6px;*/
+/*    width: 100%;*/
+/*    order: -1;*/
+/*    padding-bottom: 6px;*/
+/*}*/
+/*.attach-tag {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    gap: 4px;*/
+/*    padding: 3px 10px 3px 10px;*/
+/*    border-radius: 20px;*/
+/*    background: rgba(43, 127, 255, 0.12);*/
+/*    border: 1px solid rgba(43, 127, 255, 0.30);*/
+/*    color: var(--text-hi);*/
+/*    font-size: 12px;*/
+/*    font-family: 'Syne', sans-serif;*/
+/*    max-width: 200px;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*    white-space: nowrap;*/
+/*}*/
+/*.attach-tag button {*/
+/*    background: none;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    color: var(--text-lo);*/
+/*    font-size: 14px;*/
+/*    line-height: 1;*/
+/*    padding: 0;*/
+/*    flex-shrink: 0;*/
+/*}*/
+/*.attach-tag button:hover {*/
+/*    color: var(--text-hi);*/
+/*}*/
+
+/* ── Fix: attachPreview id + image thumbnails ── */
+#attachPreview {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -990,32 +1029,36 @@ body::after {
     order: -1;
     padding-bottom: 6px;
 }
+
 .attach-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px 3px 10px;
-    border-radius: 20px;
-    background: rgba(43, 127, 255, 0.12);
-    border: 1px solid rgba(43, 127, 255, 0.30);
-    color: var(--text-hi);
-    font-size: 12px;
-    font-family: 'Syne', sans-serif;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    position: relative;
+    padding: 3px 6px;
 }
-.attach-tag button {
-    background: none;
+
+.attach-tag img {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.attach-tag-remove {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50% !important;
+    background: rgba(0,0,0,0.55) !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    line-height: 18px !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     cursor: pointer;
-    color: var(--text-lo);
-    font-size: 14px;
-    line-height: 1;
     padding: 0;
-    flex-shrink: 0;
-}
-.attach-tag button:hover {
-    color: var(--text-hi);
 }
