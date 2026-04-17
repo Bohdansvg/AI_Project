@@ -1005,7 +1005,6 @@ body::after {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    width: 100%;
     order: -1;
     padding: 8px 0 6px ;
 }
