@@ -130,16 +130,16 @@ function updateAttachPreview() {
             const info = document.createElement("div");
             info.className = "attach-tag-info";
 
-            const name = document.createElement("span");
-            name.className = "attach-tag-name";
-            name.textContent = f.name;
+            // const name = document.createElement("span");
+            // name.className = "attach-tag-name";
+            // name.textContent = f.name;
 
-            const ext = document.createElement("span");
-            ext.className = "attach-tag-ext";
-            ext.textContent = f.name.split('.').pop().toUpperCase();
+            // const ext = document.createElement("span");
+            // ext.className = "attach-tag-ext";
+            // ext.textContent = f.name.split('.').pop().toUpperCase();
 
-            info.appendChild(name);
-            info.appendChild(ext);
+            // info.appendChild(name);
+            // info.appendChild(ext);
             tag.appendChild(iconDiv);
             tag.appendChild(info);
 

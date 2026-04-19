@@ -1049,9 +1049,8 @@ body::after {
     align-items: center;
     gap: 10px;
     padding: 10px 12px 10px 10px;
-    min-width: 160px;
-    max-width: 220px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
 }
 
 .attach_tag_icon {
