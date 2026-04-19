@@ -140,36 +140,94 @@ function addMessage(text, type, images = []) {
     const messageContainer = document.getElementById("messages");
     const row = document.createElement("div");
     row.className = "message-row " + type;
-    const avatar = document.createElement("div")
+
+    const avatar = document.createElement("div");
     avatar.className = "avatar";
     avatar.textContent = type === "user" ? "U" : " ";
+
     const content = document.createElement("div");
     content.className = "message-content";
-    content.innerHTML = formatMessage(text)
 
-    images.forEach(img => {
-        const imgEl = document.createElement("img");
-        imgEl.src = `data:${img.mimeType};base64,${img.content || img.data}`;
-        imgEl.style.cssText = "max-width:220px;max-height:220px;border-radius:8px;display:block;margin-top:6px;";
-        content.appendChild(imgEl);
-    });
+
+    if (images.length > 0) {
+        const imgGrid = document.createElement("div");
+        imgGrid.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: ${text.trim() ? '8px' : '0'};
+        `;
+        images.forEach(img => {
+            const wrapper = document.createElement("div");
+            wrapper.style.cssText = `
+                position: relative;
+                width: 80px;
+                height: 80px;
+                border-radius: 10px;
+                overflow: hidden;
+                flex-shrink: 0;
+                border: 1px solid rgba(255,255,255,0.2);
+                cursor: pointer;
+            `;
+            const imgEl = document.createElement("img");
+            imgEl.src = `data:${img.mimeType};base64,${img.content || img.data}`;
+            imgEl.style.cssText = `
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            `;
+
+            imgEl.addEventListener("click", () => {
+                const overlay = document.createElement("div");
+                overlay.style.cssText = `
+                    position: fixed;
+                    inset: 0;
+                    background: rgba(0,0,0,0.85);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    cursor: zoom-out;
+                `;
+                const fullImg = document.createElement("img");
+                fullImg.src = imgEl.src;
+                fullImg.style.cssText = `
+                    max-width: 90vw;
+                    max-height: 90vh;
+                    border-radius: 12px;
+                    object-fit: contain;
+                `;
+                overlay.appendChild(fullImg);
+                overlay.addEventListener("click", () => overlay.remove());
+                document.body.appendChild(overlay);
+            });
+            wrapper.appendChild(imgEl);
+            imgGrid.appendChild(wrapper);
+        });
+        content.appendChild(imgGrid);
+    }
+
+
+    if (text.trim()) {
+        const textDiv = document.createElement("div");
+        textDiv.innerHTML = formatMessage(text);
+        content.appendChild(textDiv);
+    }
+
 
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy";
-
     copyBtn.addEventListener("click", function () {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                copyBtn.style.opacity = "0.5";
-                setTimeout(() => {
-                    copyBtn.style.opacity = "1";
-                }, 500);
-            })
-    })
+        navigator.clipboard.writeText(text).then(() => {
+            copyBtn.style.opacity = "0.5";
+            setTimeout(() => { copyBtn.style.opacity = "1"; }, 500);
+        });
+    });
     content.appendChild(copyBtn);
+
     row.appendChild(avatar);
     row.appendChild(content);
-
     messageContainer.appendChild(row);
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
