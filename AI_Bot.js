@@ -7,176 +7,94 @@ if (!localStorage.getItem("token")) {
     window.location.href = "auth.html"
 }
 
+const input = document.getElementById("userInput");
+input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
+})
 document.addEventListener("DOMContentLoaded", function () {
-
-    const userInput = document.getElementById("userInput");
-    if (userInput) {
-        userInput.addEventListener("input", function () {
-            this.style.height = "auto";
-            this.style.height = Math.min(this.scrollHeight, 200) + "px";
-        });
-        userInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-    }
-
-
     const fileInput = document.getElementById("fileInput");
-    if (fileInput) {
-        fileInput.addEventListener("change", function () {
-            const files = Array.from(fileInput.files)
-            files.forEach(file => {
-                const ext = file.name.split('.').pop().toLowerCase();
-                if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext)) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        const img = new Image();
-                        img.onload = function () {
-                            const canvas = document.createElement('canvas');
-                            const MAX = 1024;
-                            let { width, height } = img;
-                            if (width > MAX || height > MAX) {
-                                if (width > height) { height = Math.round(height * MAX / width); width = MAX; }
-                                else { width = Math.round(width * MAX / height); height = MAX; }
+    fileInput.addEventListener("change", function () {
+        const files = Array.from(fileInput.files)
+        files.forEach(file => {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext)) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        const MAX = 1024;
+                        let {width, height} = img;
+                        if (width > MAX || height > MAX) {
+                            if (width > height) {
+                                height = Math.round(height * MAX / width);
+                                width = MAX;
+                            } else {
+                                width = Math.round(width * MAX / height);
+                                height = MAX;
                             }
-                            canvas.width = width;
-                            canvas.height = height;
-                            canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-                            const compressed = canvas.toDataURL('image/jpeg', 0.85);
-                            const base64data = compressed.split(',')[1];
-                            attachedFiles.push({ name: file.name, mimeType: 'image/jpeg', content: base64data, isImage: true });
-                            updateAttachPreview();
-                        };
-                        img.src = e.target.result;
-                    }
-                    reader.readAsDataURL(file);
-                } else if (ext === 'docx') {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        mammoth.extractRawText({ arrayBuffer: e.target.result })
-                            .then(result => {
-                                attachedFiles.push({ name: file.name, content: result.value });
-                                updateAttachPreview();
-                            })
-                            .catch(() => {
-                                attachedFiles.push({ name: file.name, content: '[Не вдалося прочитати .docx файл]' });
-                                updateAttachPreview();
-                            });
-                    }
-                    reader.readAsArrayBuffer(file);
-                } else if (['pdf', 'xls', 'xlsx', 'doc'].includes(ext)) {
-                    attachedFiles.push({ name: file.name, content: `[Файл формату .${ext} не підтримується для читання тексту]` });
-                    updateAttachPreview();
-                } else {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        attachedFiles.push({ name: file.name, content: e.target.result });
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                        const compressed = canvas.toDataURL('image/jpeg', 0.85);
+                        const base64data = compressed.split(',')[1];
+                        attachedFiles.push({
+                            name: file.name,
+                            mimeType: 'image/jpeg',
+                            content: base64data,
+                            isImage: true
+                        });
                         updateAttachPreview();
-                    }
-                    reader.readAsText(file);
+                    };
+                    img.src = e.target.result;
                 }
-            })
-            fileInput.value = "";
-        });
-    }
-
-
-    const btn = document.getElementById('sendBtn');
-    if (btn) {
-        btn.innerHTML = `
-            <div class="svg-wrapper-1">
-                <div class="svg-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="none" d="M0 0h24v24H0z"></path>
-                        <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
-                    </svg>
-                </div>
-            </div>
-            <span>Send</span>
-        `;
-
-        const style = document.createElement('style');
-        style.textContent = `
-            #sendBtn {
-                font-family: 'Syne', sans-serif;
-                font-size: 15px;
-                font-weight: 600;
-                background: #2b7fff;
-                color: white;
-                padding: 0.6em 1em 0.6em 0.9em;
-                display: flex;
-                align-items: center;
-                border: none;
-                border-radius: 14px;
-                overflow: hidden;
-                transition: all 0.2s;
-                cursor: pointer;
-                height: auto;
-                width: auto;
-                min-width: 0;
-                box-shadow: 0 4px 18px rgba(43,127,255,0.35);
-                flex-shrink: 0;
+                reader.readAsDataURL(file);
+            } else if (ext === 'docx') {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    mammoth.extractRawText({arrayBuffer: e.target.result})
+                        .then(result => {
+                            attachedFiles.push({name: file.name, content: result.value});
+                            updateAttachPreview();
+                        })
+                        .catch(() => {
+                            attachedFiles.push({name: file.name, content: '[Не вдалося прочитати .docx файл]'});
+                            updateAttachPreview();
+                        });
+                }
+                reader.readAsArrayBuffer(file);
+            } else if (['pdf', 'xls', 'xlsx', 'doc'].includes(ext)) {
+                attachedFiles.push({
+                    name: file.name,
+                    content: `[Файл формату .${ext} не підтримується для читання тексту]`
+                });
+                updateAttachPreview();
+            } else {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    attachedFiles.push({name: file.name, content: e.target.result});
+                    updateAttachPreview();
+                }
+                reader.readAsText(file);
             }
-            #sendBtn:hover:not(:disabled) {
-                background: #1a6ef0;
-                box-shadow: 0 6px 24px rgba(43,127,255,0.50);
-            }
-            #sendBtn:disabled {
-                opacity: 0.4;
-                cursor: not-allowed;
-            }
-            #sendBtn span {
-                display: block;
-                margin-left: 0.3em;
-                transition: all 0.3s ease-in-out;
-            }
-            #sendBtn svg {
-                display: block;
-                transform-origin: center center;
-                transition: transform 0.3s ease-in-out;
-            }
-            #sendBtn .svg-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            #sendBtn:hover:not(:disabled) .svg-wrapper {
-                animation: fly-1 0.6s ease-in-out infinite alternate;
-            }
-            #sendBtn:hover:not(:disabled) svg {
-                transform: translateX(0.3em) rotate(45deg) scale(1.1);
-            }
-            #sendBtn:hover:not(:disabled) span {
-                transform: translateX(0.3em);
-            }
-            #sendBtn:active:not(:disabled) {
-                transform: scale(0.95);
-            }
-            @keyframes fly-1 {
-                from { transform: translateY(0.1em); }
-                to   { transform: translateY(-0.1em); }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
-
-    Theme();
-    loadChats();
-});
+        })
+        fileInput.value = "";
+    })
+})
 
 
 function updateAttachPreview() {
-    let preview = document.getElementById("attachPreview");
+    let preview = document.getElementById("attachPreview")
     if (!preview) {
         preview = document.createElement("div");
         preview.id = "attachPreview";
         preview.className = "attachPreview";
-        const inputArea = document.querySelector(".input");
-        inputArea.insertBefore(preview, inputArea.querySelector("#userInput"));
+        const inputArea = document.querySelector(".input")
+        inputArea.insertBefore(preview, inputArea.querySelector("#userInput"))
     }
     preview.innerHTML = "";
     attachedFiles.forEach((f, i) => {
@@ -185,7 +103,10 @@ function updateAttachPreview() {
         const rm = document.createElement("button");
         rm.textContent = "×";
         rm.className = "attach-tag-remove";
-        rm.onclick = () => { attachedFiles.splice(i, 1); updateAttachPreview(); }
+        rm.onclick = () => {
+            attachedFiles.splice(i, 1);
+            updateAttachPreview();
+        }
 
         if (f.isImage) {
             tag.className = "attach-tag attach-tag--image";
@@ -196,7 +117,7 @@ function updateAttachPreview() {
             tag.className = "attach-tag attach-tag--file";
 
             const iconDiv = document.createElement("div");
-            iconDiv.className = "attach_tag_icon";
+            iconDiv.className = "attach_tag_icon"
             iconDiv.innerHTML = `<svg viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 2H6a2 2 0 00-2 2v36a2 2 0 002 2h24a2 2 0 002-2V12L22 2z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
                 <path d="M22 2v8a2 2 0 002 2h8" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/>
@@ -220,12 +141,13 @@ function updateAttachPreview() {
             info.appendChild(ext);
             tag.appendChild(iconDiv);
             tag.appendChild(info);
+
         }
         tag.appendChild(rm);
         preview.appendChild(tag);
-    });
+    })
     if (attachedFiles.length === 0 && preview.parentNode) {
-        preview.parentNode.removeChild(preview);
+        preview.parentNode.removeChild(preview)
     }
 }
 
@@ -242,7 +164,7 @@ function addMessage(text, type, images = []) {
     const content = document.createElement("div");
     content.className = "message-content";
 
-    // Зображення — маленькі превью 80×80
+
     if (images.length > 0) {
         const imgGrid = document.createElement("div");
         imgGrid.style.cssText = `
@@ -271,7 +193,7 @@ function addMessage(text, type, images = []) {
                 object-fit: cover;
                 display: block;
             `;
-            // Клік — повноекранний перегляд
+
             imgEl.addEventListener("click", () => {
                 const overlay = document.createElement("div");
                 overlay.style.cssText = `
@@ -302,20 +224,22 @@ function addMessage(text, type, images = []) {
         content.appendChild(imgGrid);
     }
 
-    // Текст повідомлення
+
     if (text.trim()) {
         const textDiv = document.createElement("div");
         textDiv.innerHTML = formatMessage(text);
         content.appendChild(textDiv);
     }
 
-    // Copy button
+
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy";
     copyBtn.addEventListener("click", function () {
         navigator.clipboard.writeText(text).then(() => {
             copyBtn.style.opacity = "0.5";
-            setTimeout(() => { copyBtn.style.opacity = "1"; }, 500);
+            setTimeout(() => {
+                copyBtn.style.opacity = "1";
+            }, 500);
         });
     });
     content.appendChild(copyBtn);
@@ -325,7 +249,6 @@ function addMessage(text, type, images = []) {
     messageContainer.appendChild(row);
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
-
 
 function sendMessage() {
     if (!currentChatId) return;
@@ -351,7 +274,6 @@ function sendMessage() {
 
     addMessage(" " + fullMessage, "user", images);
     input.value = "";
-    input.style.height = "auto";
 
     fetch(`${API}/chats/${currentChatId}/messages`, {
         method: "POST",
@@ -361,7 +283,7 @@ function sendMessage() {
         },
         body: JSON.stringify({
             message: fullMessage,
-            images: images.map(img => ({ mimeType: img.mimeType, data: img.content }))
+            images: images.map(img => ({mimeType: img.mimeType, data: img.content}))
         })
     })
         .then(res => res.json())
@@ -374,6 +296,8 @@ function sendMessage() {
                     renderChatList(chatsData);
                 }
             }
+
+
             addMessage(" " + data.reply, "ai");
         })
         .catch(() => {
@@ -402,15 +326,22 @@ function logout() {
     window.location.href = "auth.html";
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    Theme()
+    loadChats()
+})
+
 async function loadChats() {
     const token = localStorage.getItem("token");
     try {
         const res = await fetch(`${API}/chats`, {
-            headers: { "Authorization": `Bearer ${token}` }
-        });
+            headers: {"Authorization": `Bearer ${token}`}
+        })
+
         if (res.ok) {
             chatsData = await res.json();
             renderChatList(chatsData);
+
             if (chatsData.length > 0 && currentChatId === null) {
                 selectChat(chatsData[0].id, chatsData[0].title);
             } else if (chatsData.length === 0) {
@@ -420,6 +351,7 @@ async function loadChats() {
     } catch (err) {
         console.error("Error loading chats", err);
     }
+
 }
 
 function renderChatList(chats) {
@@ -431,21 +363,20 @@ function renderChatList(chats) {
 
         const titleSpan = document.createElement("span");
         titleSpan.textContent = chat.title;
-        titleSpan.style.flex = "1";
+        titleSpan.style.flex = "1"
         titleSpan.style.overflow = "hidden";
         titleSpan.style.textOverflow = "ellipsis";
         titleSpan.style.whiteSpace = "nowrap";
 
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete";
-        deleteBtn.innerHTML = `<img src="remove.png" alt="delete" style="width: 16px; height: 16px; background-color: transparent;">`;
-        deleteBtn.onclick = (e) => deleteChat(chat.id, e);
-
+        deleteBtn.innerHTML = `<img src="remove.png" alt="delete" style="width: 16px; height: 16px; background-color: transparent;">`
+        deleteBtn.onclick = (e) => deleteChat(chat.id, e)
         div.appendChild(titleSpan);
         div.appendChild(deleteBtn);
         div.onclick = () => selectChat(chat.id, chat.title);
         chatList.appendChild(div);
-    });
+    })
 }
 
 async function createNewChat() {
@@ -457,8 +388,8 @@ async function createNewChat() {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify({ title: "New Chat" })
-        });
+            body: JSON.stringify({title: "New Chat"})
+        })
         if (res.ok) {
             const newChat = await res.json();
             selectChat(newChat.id, newChat.title);
@@ -472,7 +403,7 @@ async function createNewChat() {
 async function selectChat(id, title) {
     currentChatId = id;
     document.getElementById("chatTitle").textContent = title;
-    document.getElementById("messages").innerHTML = "";
+    document.getElementById("messages").innerHTML = ""
 
     document.getElementById("userInput").disabled = false;
     document.getElementById("sendBtn").disabled = false;
@@ -480,31 +411,34 @@ async function selectChat(id, title) {
 
     document.querySelectorAll('.chat-item').forEach(el => {
         el.classList.toggle('active', el.textContent === title);
-    });
+    })
 
     const token = localStorage.getItem("token");
     try {
         const res = await fetch(`${API}/chats/${currentChatId}/messages`, {
-            headers: { "Authorization": `Bearer ${token}` }
-        });
+            headers: {"Authorization": `Bearer ${token}`}
+        })
+
         if (res.ok) {
             const messages = await res.json();
             messages.forEach(msg => {
-                addMessage(" " + msg.content, msg.role, msg.images || []);
-            });
+                addMessage(" " + msg.content, msg.role, msg.images || [])
+            })
         }
+
+
     } catch (err) {
         console.error("Error loading history", err);
     }
 }
 
 function toggleSidebar() {
-    document.querySelector(".sidebar").classList.toggle("active");
+    document.querySelector(".sidebar").classList.toggle("active")
 }
 
 function toggleTheme() {
-    const isDark = document.body.classList.toggle("dark-mode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    const isDark = document.body.classList.toggle("dark-mode")
+    localStorage.setItem("theme", isDark ? "dark" : "light")
 }
 
 function Theme() {
@@ -517,14 +451,18 @@ function Theme() {
 
 async function deleteChat(chatId, event) {
     event.stopPropagation();
-    if (!confirm("Are you sure you want to delete this chat?")) return;
+
+    if (!confirm("Are you sure you want to delete this chat?")) {
+        return;
+    }
 
     const token = localStorage.getItem("token");
     try {
         const res = await fetch(`${API}/chats/${chatId}`, {
             method: "DELETE",
-            headers: { "Authorization": `Bearer ${token}` }
-        });
+            headers: {"Authorization": `Bearer ${token}`}
+        })
+
         if (res.ok) {
             chatsData = chatsData.filter(chat => chat.id !== chatId);
             renderChatList(chatsData);
@@ -532,7 +470,7 @@ async function deleteChat(chatId, event) {
             if (currentChatId === chatId) {
                 currentChatId = null;
                 document.getElementById("chatTitle").textContent = "Select a chat";
-                document.getElementById("messages").innerHTML = "";
+                document.getElementById("messages").innerHTML = ""
                 document.getElementById("userInput").disabled = true;
                 document.getElementById("sendBtn").disabled = true;
                 document.getElementById("attachBtn").disabled = true;
@@ -545,4 +483,113 @@ async function deleteChat(chatId, event) {
     } catch (err) {
         console.error("Error deleting chat", err);
     }
+
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById('sendBtn');
+    if (!btn) return;
+
+
+    btn.innerHTML = `
+        <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                </svg>
+            </div>
+        </div>
+        <span>Send</span>
+    `;
+
+
+    const style = document.createElement('style');
+    style.textContent = `
+        #sendBtn {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            background: #2b7fff;
+            color: white;
+            padding: 0.6em 1em;
+            padding-left: 0.9em;
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+            height: auto;
+            width: auto;
+            min-width: 0;
+            box-shadow: 0 4px 18px rgba(43,127,255,0.35);
+            flex-shrink: 0;
+        }
+
+        #sendBtn:hover:not(:disabled) {
+            background: #1a6ef0;
+            box-shadow: 0 6px 24px rgba(43,127,255,0.50);
+        }
+
+        #sendBtn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        #sendBtn span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #sendBtn svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #sendBtn .svg-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #sendBtn:hover:not(:disabled) .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
+        }
+
+        #sendBtn:hover:not(:disabled) svg {
+            transform: translateX(0.3em) rotate(45deg) scale(1.1);
+        }
+
+        #sendBtn:hover:not(:disabled) span {
+            transform: translateX(0.3em);
+        }
+
+        #sendBtn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        @keyframes fly-1 {
+            from { transform: translateY(0.1em); }
+            to   { transform: translateY(-0.1em); }
+        }
+
+       
+        #sendBtn canvas,
+        #metalCanvas {
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+document.getElementById('userInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
