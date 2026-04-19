@@ -14,7 +14,6 @@
 
 <body>
 
-
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
 <div class="app-container">
@@ -27,10 +26,10 @@
             <label class="theme-toggle container">
                 <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
                 <span class="slider round">
-        <div class="background"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-    </span>
+                    <div class="background"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </span>
             </label>
         </div>
     </div>
@@ -46,19 +45,21 @@
         <div id="messages" class="messages"></div>
 
         <div class="input">
-            <input type="file" id="fileInput" style="display: none" multiple accept=".txt,.pdf,.doc,.docx,.xls,.xlsx,.js,.html,.css,.py,.java, .png, .jpg, .jpeg, .gif, .webp">
-            <button id="attachBtn" class="attach" onclick="document.getElementById('fileInput').click()" disabled title="Attach file">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <input id="userInput" placeholder="Enter your message" disabled>
-            <button id="sendBtn" class="send" onclick="sendMessage()" disabled>
-                <canvas id="metalCanvas"></canvas>
-                <svg class="send-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
+            <input type="file" id="fileInput" style="display: none" multiple
+                   accept=".txt,.pdf,.doc,.docx,.xls,.xlsx,.js,.html,.css,.py,.java, .png, .jpg, .jpeg, .gif, .webp">
+            <div id="attachPreview"></div>
+            <div class="input-box">
+                <textarea id="userInput" rows="1" placeholder="Enter your message" disabled></textarea>
+                <div class="input-bottom">
+                    <button id="attachBtn" class="attach" onclick="document.getElementById('fileInput').click()" disabled title="Attach file">
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-width="2" stroke="currentColor" d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125" stroke-linejoin="round" stroke-linecap="round"></path>
+                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M17 15V18M17 21V18M17 18H14M17 18H20"></path>
+                        </svg>
+                        <button id="sendBtn" class="send" onclick="sendMessage()" disabled>
+                        </button>
+                </div>
+            </div>
         </div>
 
     </div>

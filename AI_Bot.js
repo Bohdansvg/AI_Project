@@ -412,97 +412,108 @@ async function deleteChat(chatId, event) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById('metalCanvas');
     const btn = document.getElementById('sendBtn');
-    if (!canvas || !btn) return;
+    if (!btn) return;
 
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) return;
 
-    const S = 96;
-    canvas.width = S;
-    canvas.height = S;
+    btn.innerHTML = `
+        <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                </svg>
+            </div>
+        </div>
+        <span>Send</span>
+    `;
 
-    const vs = `attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}`;
-    const fs = `
-    precision highp float;
-    uniform float u_t,u_h;
-    uniform vec2 u_r;
-    float hash(vec2 p){p=fract(p*vec2(234.34,435.345));p+=dot(p,p+34.23);return fract(p.x*p.y);}
-    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
-      return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
-    float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.1+vec2(1.7,9.2);a*=.5;}return v;}
-    void main(){
-      vec2 uv=(gl_FragCoord.xy/u_r)*2.-1.;
-      float d=length(uv);if(d>1.){gl_FragColor=vec4(0);return;}
-      float t=u_t*(.4+u_h*.6);
-      vec2 p=uv*1.5+vec2(t*.2,t*.12);
-      float f=fbm(p+fbm(p+fbm(p)));
-vec3 dark  = vec3(.01,.01,.02);
-      vec3 mid   = vec3(.22,.24,.30);
-      vec3 light = vec3(.45,.48,.58);
 
-      vec3 c = mix(dark, mid, f);
-      c = mix(c, light, pow(f, 2.5) * (.4 + u_h * .3));
+    const style = document.createElement('style');
+    style.textContent = `
+        #sendBtn {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            background: #2b7fff;
+            color: white;
+            padding: 0.6em 1em;
+            padding-left: 0.9em;
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+            height: auto;
+            width: auto;
+            min-width: 0;
+            box-shadow: 0 4px 18px rgba(43,127,255,0.35);
+            flex-shrink: 0;
+        }
 
-     
-      float center = pow(max(0., 1. - d * 1.5), 2.0);
-      c = mix(c, dark, center * .6);
+        #sendBtn:hover:not(:disabled) {
+            background: #1a6ef0;
+            box-shadow: 0 6px 24px rgba(43,127,255,0.50);
+        }
 
-     
-      float rim = pow(smoothstep(.55, 1., d), 1.8);
-      vec3 rimColor = mix(
-        vec3(.55,.65,.90),   /* синювато-холодний */
-        vec3(.90,.95,1.00),  /* майже білий */
-        u_h                  /* на hover — біліший */
-      );
-      c += rimColor * rim * (1.2 + u_h * .8);
+        #sendBtn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
 
-     
-      float edge = pow(smoothstep(.80, 1., d), 3.5);
-      c += vec3(.70,.80,1.0) * edge * (1.5 + u_h * 1.0);
+        #sendBtn span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.3s ease-in-out;
+        }
 
-      c = mix(c, vec3(0.), smoothstep(.96, 1., d));
-      c = pow(c, vec3(1.15));
+        #sendBtn svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
+        }
 
-      gl_FragColor=vec4(c,1.);
-    }`;
+        #sendBtn .svg-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    const mk = (src, t) => {
-        const s = gl.createShader(t);
-        gl.shaderSource(s, src);
-        gl.compileShader(s);
-        return s;
-    };
-    const prog = gl.createProgram();
-    gl.attachShader(prog, mk(vs, gl.VERTEX_SHADER));
-    gl.attachShader(prog, mk(fs, gl.FRAGMENT_SHADER));
-    gl.linkProgram(prog);
-    gl.useProgram(prog);
+        #sendBtn:hover:not(:disabled) .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
+        }
 
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-    const ap = gl.getAttribLocation(prog, 'a');
-    gl.enableVertexAttribArray(ap);
-    gl.vertexAttribPointer(ap, 2, gl.FLOAT, false, 0, 0);
+        #sendBtn:hover:not(:disabled) svg {
+            transform: translateX(0.3em) rotate(45deg) scale(1.1);
+        }
 
-    const uT = gl.getUniformLocation(prog, 'u_t'),
-        uR = gl.getUniformLocation(prog, 'u_r'),
-        uH = gl.getUniformLocation(prog, 'u_h');
+        #sendBtn:hover:not(:disabled) span {
+            transform: translateX(0.3em);
+        }
 
-    let hover = 0, target = 0, t0 = null;
-    btn.addEventListener('mouseenter', () => target = 1);
-    btn.addEventListener('mouseleave', () => target = 0);
+        #sendBtn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
 
-    (function frame(ts) {
-        if (!t0) t0 = ts;
-        hover += (target - hover) * 0.09;
-        gl.viewport(0, 0, S, S);
-        gl.uniform1f(uT, (ts - t0) / 1000);
-        gl.uniform2f(uR, S, S);
-        gl.uniform1f(uH, hover);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        requestAnimationFrame(frame);
-    })(0);
+        @keyframes fly-1 {
+            from { transform: translateY(0.1em); }
+            to   { transform: translateY(-0.1em); }
+        }
+
+       
+        #sendBtn canvas,
+        #metalCanvas {
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
 });
