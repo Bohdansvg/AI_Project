@@ -96,16 +96,6 @@ function updateAttachPreview() {
         const inputArea = document.querySelector(".input")
         inputArea.insertBefore(preview, inputArea.querySelector("#userInput"))
     }
-    const parent = referenceNode.parentNode
-
-    if (parent && parent.contains(referenceNode)) {
-        parent.insertBefore(newNode, referenceNode);
-    } else {
-        const container = document.getElementById('preview-container');
-        if (container) container.appendChild(newNode);
-    }
-
-
 
     preview.innerHTML = "";
     attachedFiles.forEach((f, i) => {
