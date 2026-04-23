@@ -1021,9 +1021,8 @@ body::after {
 }
 
 
-
 #attachPreview {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 8px;
     padding: 8px 0 6px ;

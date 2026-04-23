@@ -141,9 +141,7 @@ function updateAttachPreview() {
         tag.appendChild(rm);
         preview.appendChild(tag);
     })
-    if (attachedFiles.length === 0 && preview.parentNode) {
-        preview.parentNode.removeChild(preview)
-    }
+    preview.style.display = attachedFiles.length > 0 ? "flex" : "none";
 }
 
 
