@@ -88,14 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function updateAttachPreview() {
-    let preview = document.getElementById("attachPreview")
-    if (!preview) {
-        preview = document.createElement("div");
-        preview.id = "attachPreview";
-        preview.className = "attachPreview";
-        const inputArea = document.querySelector(".input")
-        inputArea.insertBefore(preview, inputArea.querySelector("#userInput"))
-    }
+    const preview = document.getElementById("attachPreview")
+    if (!preview) return
 
     preview.innerHTML = "";
     attachedFiles.forEach((f, i) => {

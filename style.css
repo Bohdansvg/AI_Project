@@ -1023,10 +1023,9 @@ body::after {
 
 
 #attachPreview {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 8px;
-    order: -1;
     padding: 8px 0 6px ;
 }
 

@@ -7,7 +7,10 @@
     <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="" />
+    <list id="215578dd-9b2d-47ef-a9b2-5ada8dd1843d" name="Changes by argor" comment="">
+      <change beforePath="$PROJECT_DIR$/AI_Bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/AI_Bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +171,7 @@
       <workItem from="1776614371360" duration="3359000" />
       <workItem from="1776945890102" duration="340000" />
       <workItem from="1776946372237" duration="1000" />
-      <workItem from="1776963587037" duration="323000" />
+      <workItem from="1776963587037" duration="1187000" />
     </task>
     <servers />
   </component>
