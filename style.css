@@ -1023,7 +1023,7 @@ body::after {
 
 
 #attachPreview {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     gap: 8px;
     padding: 8px 0 6px ;
