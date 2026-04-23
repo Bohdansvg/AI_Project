@@ -176,6 +176,13 @@ body::after {
     padding-left: 20px;
 }
 
+.theme-toggle.container{
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
 .theme-toggle {
     --dark: #111111;
     --sun: #ffd700;
