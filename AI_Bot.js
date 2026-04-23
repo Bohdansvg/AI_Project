@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                 }
                 reader.readAsArrayBuffer(file);
-            } else if (['pdf', 'xls', 'xlsx', 'doc'].includes(ext)) {
+            } else if (['xls', 'xlsx', 'doc'].includes(ext)) {
                 attachedFiles.push({
                     name: file.name,
                     content: `[Файл формату .${ext} не підтримується для читання тексту]`
