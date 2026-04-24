@@ -364,9 +364,17 @@ function renderChatList(chats) {
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete";
         deleteBtn.innerHTML = `
-    <svg class="svgIcon" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="bin-top" d="M5 5H19L18 7H6L5 5ZM3 3L5 5H19L21 3H3ZM9 1H15V3H9V1Z" fill="white"/>
-        <path d="M6 7L7.5 23H16.5L18 7H6Z" fill="white"/>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 69 14" class="svgIcon bin-top">
+        <g clip-path="url(#clip0_35_24)">
+            <path fill="currentColor" d="M20.8232 2.62734L19.9948 4.21304C19.8224 4.54309 19.4808 4.75 19.1085 4.75H4.92857C2.20246 4.75 0 6.87266 0 9.5C0 12.1273 2.20246 14.25 4.92857 14.25H64.0714C66.7975 14.25 69 12.1273 69 9.5C69 6.87266 66.7975 4.75 64.0714 4.75H49.8915C49.5192 4.75 49.1776 4.54309 49.0052 4.21305L48.1768 2.62734C47.3451 1.00938 45.6355 0 43.7719 0H25.2281C23.3645 0 21.6549 1.00938 20.8232 2.62734Z"></path>
+        </g>
+        <defs><clipPath id="clip0_35_24"><rect fill="white" height="14" width="69"></rect></clipPath></defs>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 69 57" class="svgIcon bin-bottom">
+        <g clip-path="url(#clip0_35_22)">
+            <path fill="currentColor" d="M64.0023 1.0648C64.0397 0.4882 63.5822 0 63.0044 0H5.99556C5.4178 0 4.96025 0.4882 4.99766 1.0648L8.19375 50.3203C8.44018 54.0758 11.6746 57 15.5712 57H53.4288C57.3254 57 60.5598 54.0758 60.8062 50.3203L64.0023 1.0648Z"></path>
+        </g>
+        <defs><clipPath id="clip0_35_22"><rect fill="white" height="57" width="69"></rect></clipPath></defs>
     </svg>
 `;
         deleteBtn.onclick = (e) => deleteChat(chat.id, e)
