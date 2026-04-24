@@ -311,7 +311,7 @@ body::after {
     font-weight: 600;
 }
 
-/* ── Chat area ────────────────────────────────────────────── */
+
 .chat {
     flex: 1;
     min-width: 0;
@@ -321,7 +321,7 @@ body::after {
     overflow: hidden;
 }
 
-/* ── Chat header ──────────────────────────────────────────── */
+
 .chat-header {
     position: relative;
     display: flex;
@@ -466,29 +466,6 @@ body::after {
 }
 
 
-/*.logout {*/
-/*    position: absolute;*/
-/*    right: 12px;*/
-/*    top: 50%;*/
-/*    transform: translateY(-50%);*/
-/*    width: 40px;*/
-/*    height: 40px;*/
-/*    border: none;*/
-/*    border-radius: 9px;*/
-/*    cursor: pointer;*/
-/*    background: url("logout.png") center/20px no-repeat transparent;*/
-/*    filter: brightness(0) opacity(0.35);*/
-/*    transition: var(--t);*/
-/*    touch-action: manipulation;*/
-/*}*/
-
-/*.logout:hover,*/
-/*.logout:active {*/
-/*    filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(340deg) opacity(0.75);*/
-/*    background-color: rgba(255, 60, 60, 0.07);*/
-/*}*/
-
-/* ── Messages ─────────────────────────────────────────────── */
 #messages {
     flex: 1;
     overflow-y: auto;
@@ -563,7 +540,7 @@ body::after {
     box-shadow: 0 0 10px rgba(43, 127, 255, 0.12);
 }
 
-/* ── Bubbles ──────────────────────────────────────────────── */
+
 .message-content {
     font-size: 14px;
     line-height: 1.68;
@@ -582,7 +559,6 @@ body::after {
     box-shadow: 0 6px 24px rgba(43, 127, 255, 0.28);
 }
 
-/* AI bubble — white glass */
 .message-row.ai .message-content {
     background: var(--glass-ai-msg);
     backdrop-filter: blur(18px) saturate(1.6);
@@ -608,7 +584,7 @@ body::after {
     opacity: 0.30;
 }
 
-/* ── Typing dots ──────────────────────────────────────────── */
+
 .typing-dots {
     display: flex;
     gap: 5px;
@@ -643,7 +619,7 @@ body::after {
     }
 }
 
-/* ── Input area ───────────────────────────────────────────── */
+
 .input {
     display: flex;
     flex-direction: column;
@@ -668,7 +644,7 @@ body::after {
     background: linear-gradient(90deg, transparent, rgba(43, 127, 255, 0.25) 50%, transparent);
 }
 
-/* ── Input box (textarea wrapper) ────────────────────────── */
+
 .input-box {
     display: flex;
     flex-direction: column;
@@ -730,7 +706,7 @@ body::after {
     border-radius: 99px;
 }
 
-/* ── Input bottom row (attach + send) ────────────────────── */
+
 .input-bottom {
     display: flex;
     align-items: center;
@@ -738,9 +714,7 @@ body::after {
     padding: 4px 8px 8px 10px;
 }
 
-/* ── Send button — замінено на Liquid Metal ─────────────── */
 
-/* ── Copy button ──────────────────────────────────────────── */
 .copy {
     position: absolute;
     top: 8px;
@@ -770,7 +744,7 @@ body::after {
     transform: scale(0.9);
 }
 
-/* ── Code blocks ──────────────────────────────────────────── */
+
 .message-row.ai .message-content pre,
 .message-row.ai .message-content code {
     display: block;
@@ -789,7 +763,7 @@ body::after {
     color: var(--text-hi);
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+
 @media (max-width: 860px) {
     #messages {
         padding: 20px 8%;
@@ -1089,7 +1063,7 @@ body::after {
     height: 36px;
     border-radius: 9px;
     border: 1.5px solid rgba(255, 255, 255, 0.30);
-    background: rgba(43, 127, 255, 0.18);
+    background: rgba(43, 127, 255, 0.10);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     color: rgba(255, 255, 255, 0.75);
