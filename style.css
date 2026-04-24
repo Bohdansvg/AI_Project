@@ -386,7 +386,6 @@ body::after {
     filter: brightness(0) opacity(0.80);
     background-color: rgba(43, 127, 255, 0.08);
 }
-
 .logout {
     --night-rider: #2e2e2e;
     --af-white: #f3f3f3;
@@ -412,7 +411,6 @@ body::after {
     touch-action: manipulation;
 }
 
-
 .logout .sign {
     width: 100%;
     display: flex;
@@ -422,13 +420,12 @@ body::after {
     transition: width .3s, padding .3s;
 }
 
-.logout .sign img {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0) opacity(0.35);
-    transition: filter .3s;
+.logout .sign svg {
+    width: 17px;
+    height: 17px;
+    fill: #888;
+    transition: fill .3s;
 }
-
 
 .logout .text {
     position: absolute;
@@ -442,7 +439,6 @@ body::after {
     transition: opacity .3s, width .3s, padding .3s;
 }
 
-
 .logout:hover {
     width: 110px;
     border-radius: 9px;
@@ -455,8 +451,8 @@ body::after {
     padding-left: 12px;
 }
 
-.logout:hover .sign img {
-    filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(340deg) opacity(0.75);
+.logout:hover .sign svg {
+    fill: #ff3c3c;
 }
 
 .logout:hover .text {
@@ -465,7 +461,6 @@ body::after {
     padding-right: 10px;
 }
 
-/* click */
 .logout:active {
     transform: translateY(-50%) translate(2px, 2px);
 }
