@@ -1063,7 +1063,7 @@ body::after {
     height: 36px;
     border-radius: 9px;
     border: 1.5px solid rgba(255, 255, 255, 0.30);
-    background: rgba(43, 127, 255, 0.28);
+    background: rgba(43, 127, 255, 0.38);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     color: rgba(255, 255, 255, 0.75);
