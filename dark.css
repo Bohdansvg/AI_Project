@@ -4,7 +4,7 @@ body.dark-mode {
     height: 100vh;
     height: 100dvh;
     height: -webkit-fill-available;
-    background: #111113;
+    background: #111119;
     color: var(--text-hi);
     overflow: hidden;
     padding-top: env(safe-area-inset-top);
@@ -18,7 +18,10 @@ body.dark-mode::before,
 body.dark-mode::after {
     display: none;
 }
-
+body.dark-mode .chat-header h1,
+body.dark-mode #chatTitle {
+    color: rgba(245, 245, 248, 0.90);
+}
 
 body.dark-mode .sidebar {
     background: #18181b;
