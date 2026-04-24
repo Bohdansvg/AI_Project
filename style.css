@@ -245,20 +245,67 @@ body::after {
 }
 
 
+/*.delete {*/
+/*    background: transparent;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    padding: 5px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    opacity: 0.4;*/
+/*    transition: opacity 0.2s;*/
+/*}*/
+
+/*.delete:hover {*/
+/*    opacity: 0.85;*/
+/*}*/
+
 .delete {
-    background: transparent;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: transparent;
     border: none;
-    cursor: pointer;
-    padding: 5px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0.4;
-    transition: opacity 0.2s;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    gap: 2px;
+    opacity: 0;
+}
+
+.chat-item:hover .delete {
+    opacity: 1;
+}
+
+.delete .svgIcon {
+    width: 11px;
+    transition: transform 0.3s;
+}
+
+.delete .svgIcon path {
+    fill: rgba(255, 255, 255, 0.6);
 }
 
 .delete:hover {
-    opacity: 0.85;
+    background-color: rgba(255, 69, 69, 0.15);
+    gap: 0;
+}
+
+.delete:hover .svgIcon path {
+    fill: rgb(255, 89, 89);
+}
+
+.delete:hover .bin-top {
+    transition-duration: 0.5s;
+    transform: rotate(160deg);
+    transform-origin: bottom right;
 }
 
 

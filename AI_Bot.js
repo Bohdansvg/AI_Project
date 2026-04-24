@@ -363,7 +363,12 @@ function renderChatList(chats) {
 
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete";
-        deleteBtn.innerHTML = `<img src="remove.png" alt="delete" style="width: 16px; height: 16px; background-color: transparent;">`
+        deleteBtn.innerHTML = `
+    <svg class="svgIcon" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="bin-top" d="M5 5H19L18 7H6L5 5ZM3 3L5 5H19L21 3H3ZM9 1H15V3H9V1Z" fill="white"/>
+        <path d="M6 7L7.5 23H16.5L18 7H6Z" fill="white"/>
+    </svg>
+`;
         deleteBtn.onclick = (e) => deleteChat(chat.id, e)
         div.appendChild(titleSpan);
         div.appendChild(deleteBtn);
