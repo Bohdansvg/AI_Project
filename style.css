@@ -231,171 +231,6 @@ body::after {
     background: #303136;
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
-/*.theme-toggle {*/
-/*    --dark: #111111;*/
-/*    --sun: #ffd700;*/
-/*    --sun-shadow: #987416;*/
-/*    --moon: #dddddd;*/
-/*    --moon-shadow: #808080;*/
-/*    --star: #ffffff;*/
-/*    --cloud: #ffffff;*/
-/*    --crater: #535370;*/
-/*    --shadow-01: #80808077;*/
-/*    --shadow-02: #ffffff22;*/
-/*    --shadow-03: #555555;*/
-/*    --background-day: linear-gradient(skyblue, cadetblue);*/
-/*    --background-night: linear-gradient(-45deg, #222, #000030);*/
-
-/*    position: relative;*/
-/*    display: inline-block;*/
-/*    width: 80px;*/
-/*    height: 34px;*/
-/*    transform: scale(1.2);*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.theme-toggle input {*/
-/*    opacity: 0;*/
-/*    width: 0;*/
-/*    height: 0;*/
-/*}*/
-
-/*.theme-toggle .slider {*/
-/*    position: absolute;*/
-/*    cursor: pointer;*/
-/*    inset: 0;*/
-/*    background: var(--background-day);*/
-/*    box-shadow: inset 0 0 3px;*/
-/*    transition: 0.4s;*/
-/*    filter: drop-shadow(0 0 2px var(--dark));*/
-/*    overflow: hidden;*/
-/*    z-index: 1;*/
-/*}*/
-
-/*.theme-toggle .slider::before {*/
-/*    position: absolute;*/
-/*    content: "";*/
-/*    height: 26px;*/
-/*    width: 26px;*/
-/*    left: 4px;*/
-/*    bottom: 4px;*/
-/*    background-color: var(--sun);*/
-/*    transition: 0.4s;*/
-/*    box-shadow: inset 0 -1px 2px var(--sun-shadow),*/
-/*    0 1px 2px var(--shadow-01),*/
-/*    0 0 0 10px var(--shadow-02),*/
-/*    0 0 0 20px var(--shadow-02),*/
-/*    10px 0 0 20px var(--shadow-02);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider {*/
-/*    background: var(--background-night);*/
-/*    filter: drop-shadow(0 0 2px #fff);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider::before {*/
-/*    background: var(--moon);*/
-/*    transform: translateX(180%);*/
-/*    box-shadow: inset 0 -1px 2px var(--moon-shadow),*/
-/*    0 1px 2px var(--shadow-03),*/
-/*    0 0 0 10px var(--shadow-02),*/
-/*    0 0 0 20px var(--shadow-02),*/
-/*    -10px 0 0 20px var(--shadow-02);*/
-/*}*/
-
-/*.theme-toggle .slider::after {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    background: var(--crater);*/
-/*    width: 4px;*/
-/*    height: 4px;*/
-/*    border-radius: 50%;*/
-/*    bottom: 65%;*/
-/*    right: 16%;*/
-/*    box-shadow: -8px 7px 0 3px var(--crater), 2px 10px 0 var(--crater);*/
-/*    transition: .4s;*/
-/*    transform: scale(0) rotate(360deg);*/
-/*    filter: saturate(.75);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider::after {*/
-/*    transform: scale(1) rotate(-24deg);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .background {*/
-/*    transform: translateY(260%);*/
-/*    opacity: 0;*/
-/*}*/
-
-/*.theme-toggle .star {*/
-/*    transform: scale(0);*/
-/*    transition: .4s;*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .star {*/
-/*    position: absolute;*/
-/*    width: 0;*/
-/*    height: 0;*/
-/*    border: 10px solid transparent;*/
-/*    border-bottom: 7px solid var(--star);*/
-/*    transform: rotate(35deg);*/
-/*    border-top: none;*/
-/*    margin: 5px 0;*/
-/*    transform: scale(.3) translate(50%);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .star:last-child {*/
-/*    transform: scale(.4) translate(225%, 300%);*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .star::before,*/
-/*.theme-toggle input:checked + .slider .star::after {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    width: 0;*/
-/*    height: 0;*/
-/*    border-top: none;*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .star::before {*/
-/*    border: 3px solid transparent;*/
-/*    border-bottom: 8px solid var(--star);*/
-/*    transform: rotate(35deg);*/
-/*    top: -7.5px;*/
-/*    left: 1.5px;*/
-/*}*/
-
-/*.theme-toggle input:checked + .slider .star::after {*/
-/*    border: 10px solid transparent;*/
-/*    border-bottom: 7px solid var(--star);*/
-/*    transform: rotate(70deg);*/
-/*    top: -7px;*/
-/*    left: -4.5px;*/
-/*}*/
-
-/*.theme-toggle .slider.round {*/
-/*    border-radius: 34px;*/
-/*}*/
-
-/*.theme-toggle .slider.round::before {*/
-/*    border-radius: 50%;*/
-/*}*/
-
-/*.theme-toggle .background {*/
-/*    position: absolute;*/
-/*    width: 10px;*/
-/*    height: 10px;*/
-/*    background: var(--cloud);*/
-/*    border-radius: 50%;*/
-/*    bottom: 0;*/
-/*    right: 0;*/
-/*    box-shadow: 0 -10px 0 8px var(--cloud),*/
-/*    -10px 0px 0 8px var(--cloud),*/
-/*    -45px 4px 0 5px var(--cloud),*/
-/*    -60px 0px 0 3px var(--cloud),*/
-/*    -29px 2px 0 8px var(--cloud);*/
-/*    transition: .4s;*/
-/*}*/
 
 @media (max-width: 600px) {
     .new-chat-btn {
@@ -553,26 +388,110 @@ body::after {
 }
 
 .logout {
+    --night-rider: #2e2e2e;
+    --af-white: #f3f3f3;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
+
     width: 40px;
     height: 40px;
     border: none;
     border-radius: 9px;
     cursor: pointer;
-    background: url("logout.png") center/20px no-repeat transparent;
-    filter: brightness(0) opacity(0.35);
-    transition: var(--t);
+    overflow: hidden;
+    background-color: transparent;
+    box-shadow: none;
+    transition: width .3s, border-radius .3s, background-color .3s;
     touch-action: manipulation;
 }
 
-.logout:hover,
-.logout:active {
-    filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(340deg) opacity(0.75);
-    background-color: rgba(255, 60, 60, 0.07);
+
+.logout .sign {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: width .3s, padding .3s;
 }
+
+.logout .sign img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) opacity(0.35);
+    transition: filter .3s;
+}
+
+
+.logout .text {
+    position: absolute;
+    right: 0;
+    width: 0;
+    opacity: 0;
+    color: #ff3c3c;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: opacity .3s, width .3s, padding .3s;
+}
+
+
+.logout:hover {
+    width: 110px;
+    border-radius: 9px;
+    background-color: rgba(255, 60, 60, 0.07);
+    transform: translateY(-50%);
+}
+
+.logout:hover .sign {
+    width: 30%;
+    padding-left: 12px;
+}
+
+.logout:hover .sign img {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(340deg) opacity(0.75);
+}
+
+.logout:hover .text {
+    opacity: 1;
+    width: 70%;
+    padding-right: 10px;
+}
+
+/* click */
+.logout:active {
+    transform: translateY(-50%) translate(2px, 2px);
+}
+
+
+/*.logout {*/
+/*    position: absolute;*/
+/*    right: 12px;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    border: none;*/
+/*    border-radius: 9px;*/
+/*    cursor: pointer;*/
+/*    background: url("logout.png") center/20px no-repeat transparent;*/
+/*    filter: brightness(0) opacity(0.35);*/
+/*    transition: var(--t);*/
+/*    touch-action: manipulation;*/
+/*}*/
+
+/*.logout:hover,*/
+/*.logout:active {*/
+/*    filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(500%) hue-rotate(340deg) opacity(0.75);*/
+/*    background-color: rgba(255, 60, 60, 0.07);*/
+/*}*/
 
 /* ── Messages ─────────────────────────────────────────────── */
 #messages {
