@@ -45,7 +45,7 @@ body.dark-mode .input::before {
 }
 
 body.dark-mode .input input {
-    background: #1c1c1f;
+    background: #161618;
     border: 1px solid #2e2e33;
     color: rgba(245, 245, 248, 0.90);
     box-shadow: none;
