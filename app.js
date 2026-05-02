@@ -19,6 +19,21 @@ function signInWithGoogle(){
     google.accounts.id.prompt()
 }
 
+async function handleGoogleSignIn(){
+    const res = await fetch(API + "/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credential: response.credential })
+    })
+    const data = await res.json()
+    if (res.ok && data.token){
+        localStorage.setItem("token", data.token)
+        window.location.href = "ai_bot.html"
+    } else{
+        alert("Google Sign In failed")
+    }
+}
+
 function toggleMode(e) {
     if (e) e.preventDefault();
     isLoginMode = !isLoginMode;
