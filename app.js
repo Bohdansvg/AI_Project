@@ -1,6 +1,7 @@
 const API = "/api"
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+let isLoginMode = false;
 
 window.addEventListener('load', () => {
     if(typeof google !== 'undefined') {
@@ -17,9 +18,6 @@ function signInWithGoogle(){
     }
     google.accounts.id.prompt()
 }
-
-
-let isLoginMode = false;
 
 function toggleMode(e) {
     if (e) e.preventDefault();
