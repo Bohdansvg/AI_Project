@@ -1,7 +1,7 @@
 const API = "/api"
-
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 let isLoginMode = false;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+
 
 window.addEventListener('load', () => {
     if(typeof google !== 'undefined') {
