@@ -1,5 +1,24 @@
 const API = "/api"
 
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+
+window.addEventListener('load', () => {
+    if(typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: handleGoogleSignIn
+        })
+    }
+})
+
+function signInWithGoogle(){
+    if(typeof google === "undefined") {
+        return alert("Google Sign In dont work connection")
+    }
+    google.accounts.id.prompt()
+}
+
+
 let isLoginMode = false;
 
 function toggleMode(e) {
