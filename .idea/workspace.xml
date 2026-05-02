@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8561483b-b114-4bd6-8df3-1c72bfecce22" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
     </list>
     <list id="47e6511e-84d5-4301-91e2-e69f165081bf" name="Changes by argor" comment="">
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/auth.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,14 +26,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/auth.html">
-      <ranges>
-        <range start1="73" end1="73" start2="73" end2="87" changelist="8561483b-b114-4bd6-8df3-1c72bfecce22" />
-        <range start1="86" end1="87" start2="100" end2="101" changelist="47e6511e-84d5-4301-91e2-e69f165081bf" />
-      </ranges>
-    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -184,6 +173,8 @@
       <workItem from="1776963587037" duration="2976000" />
       <workItem from="1777042474980" duration="7051000" />
       <workItem from="1777309383393" duration="2621000" />
+      <workItem from="1777707744925" duration="280000" />
+      <workItem from="1777712461352" duration="509000" />
     </task>
     <servers />
   </component>
