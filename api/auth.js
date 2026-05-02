@@ -96,7 +96,7 @@ async function googleAuth(req, res) {
                 "INSERT INTO users (user_name, email, password, google_id) VALUES ($1, $2, $3, $4) RETURNING id",
                 [name, email, null, googleId]
             )
-            userId = inserted.rows[0].id
+            userId = insertedUser.rows[0].id
         }else{
             userId = userResult.rows[0].id
         }
@@ -114,4 +114,4 @@ async function googleAuth(req, res) {
 }
 
 
-module.exports = { register, login, verifyToken };
+module.exports = { register, login, verifyToken, googleAuth };
