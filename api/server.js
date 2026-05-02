@@ -3,7 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 
-const { register, login, verifyToken } = require("./auth.js");
+const { register, login, verifyToken, googleAuth } = require("./auth.js");
 const pool = require("./db.js");
 
 dotenv.config({ path: path.join(__dirname, ".env") });
@@ -17,6 +17,7 @@ app.use(express.static("."));
 
 app.post("/api/register", register);
 app.post("/api/login", login);
+app.post("/api/auth/google", googleAuth);
 
 // Проверка подключения к базе
 pool.query("SELECT NOW()", (err, res) => {

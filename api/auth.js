@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const pool = require("./db.js")
+const pool = require("./db.js");
+const { OAuth2Client } = require('google-auth-library');
+
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 async function register(req, res) {
     const { user_name, email, password } = req.body
@@ -73,4 +76,42 @@ function verifyToken(req, res, next) {
         next();
     })
 }
+
+async function googleAuth(req, res) {
+    const { credential } = req.body;
+    if (!credential) return res.status(400).json({ error: "No credential" });
+
+    try {
+        const ticket = await  googleClient.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID
+        })
+        const {email, name, sub: googleId} = ticket.getPayload()
+
+        let userResult = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+
+        let userId
+        if (userResult.rows.length === 0) {
+            const insertedUser = await pool.query(
+                "INSERT INTO users (user_name, email, password, google_id) VALUES ($1, $2, $3, $4) RETURNING id",
+                [name, email, null, googleId]
+            )
+            userId = inserted.rows[0].id
+        }else{
+            userId = userResult.rows[0].id
+        }
+
+        const token = jwt.sign(
+            { id: userId },
+            "SECRET_KEY",
+            { expiresIn: "10h" }
+        );
+        res.json({ token });
+    } catch (error) {
+        console.error("Google auth error:", error);
+        res.status(500).json({ error: error.toString(), stack: error.stack });
+    }
+}
+
+
 module.exports = { register, login, verifyToken };

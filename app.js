@@ -19,7 +19,7 @@ function signInWithGoogle(){
     google.accounts.id.prompt()
 }
 
-async function handleGoogleSignIn(){
+async function handleGoogleSignIn(response){
     const res = await fetch(API + "/auth/google", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
