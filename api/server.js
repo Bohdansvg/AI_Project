@@ -28,9 +28,15 @@ pool.query("SELECT NOW()", (err, res) => {
     }
 });
 
-pool.query("ALTER TABLE messages ADD COLUMN IF NOT EXISTS images JSONB DEFAULT NULL", (err) =>{
-    if (err) console.error("Database connection error:", err.stack);
-})
+pool.query("ALTER TABLE messages ADD COLUMN IF NOT EXISTS images JSONB DEFAULT NULL", (err) => {
+    if (err) console.error("Migration images error:", err.message);
+});
+pool.query("ALTER TABLE users ADD COLUMN IF NOT EXISTS google_id TEXT", (err) => {
+    if (err) console.error("Migration google_id error:", err.message);
+});
+pool.query("ALTER TABLE users ALTER COLUMN password DROP NOT NULL", (err) => {
+    if (err) console.error("Migration password nullable error:", err.message);
+});
 // ============================
 // GET CHATS
 // ============================
