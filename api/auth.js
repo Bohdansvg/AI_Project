@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const pool = require("./db.js");
 const { OAuth2Client } = require('google-auth-library');
 
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
 async function register(req, res) {
     const { user_name, email, password } = req.body
 
@@ -82,7 +80,8 @@ async function googleAuth(req, res) {
     if (!credential) return res.status(400).json({ error: "No credential" });
 
     try {
-        const ticket = await  googleClient.verifyIdToken({
+        const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        const ticket = await googleClient.verifyIdToken({
             idToken: credential,
             audience: process.env.GOOGLE_CLIENT_ID
         })
