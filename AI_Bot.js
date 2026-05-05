@@ -324,6 +324,61 @@ document.addEventListener("DOMContentLoaded", () => {
     loadChats()
 })
 
+let recognition = null
+let isRecording = false
+
+function voice(){
+    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert("Твій браузер не підтримує голосовий ввід. Спробуй Chrome або Edge.");
+        return;
+    }
+}
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+recognition = new SpeechRecognition()
+recognition.lang = 'uk-UA'
+recognition.interimResults = true;
+recognition.continuons = false
+
+const micBtn = document.getElementById("micBtn");
+const input = document.getElementById("userInput");
+let transcript = ''
+
+recognition.onstart = () => {
+    isRecording = true;
+    finalTranscript = '';
+    micBtn.classList.add("mic--active");
+    input.placeholder = "Слухаю...";
+};
+
+recognition.onresult = (e) => {
+    let interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+        const t = e.results[i][0].transcript;
+        if (e.results[i].isFinal) finalTranscript += t;
+        else interim = t;
+    }
+    input.value = finalTranscript + interim;
+};
+
+
+recognition.onend = () => {
+    isRecording = false;
+    micBtn.classList.remove("mic--active");
+    input.placeholder = "Enter your message";
+    if (finalTranscript.trim()) sendMessage();
+};
+
+recognition.onerror = (e) => {
+    isRecording = false;
+    micBtn.classList.remove("mic--active");
+    input.placeholder = "Enter your message";
+    if (e.error !== 'no-speech') console.error("Speech error:", e.error);
+};
+
+recognition.start()
+
+
 async function loadChats() {
     const token = localStorage.getItem("token");
     try {
@@ -414,6 +469,7 @@ async function selectChat(id, title) {
     document.getElementById("userInput").disabled = false;
     document.getElementById("sendBtn").disabled = false;
     document.getElementById("attachBtn").disabled = false;
+    document.getElementById("micBtn").disabled = false;
 
     document.querySelectorAll('.chat-item').forEach(el => {
         el.classList.toggle('active', el.textContent === title);
@@ -480,6 +536,7 @@ async function deleteChat(chatId, event) {
                 document.getElementById("userInput").disabled = true;
                 document.getElementById("sendBtn").disabled = true;
                 document.getElementById("attachBtn").disabled = true;
+                document.getElementById("micBtn").disabled = true;
 
                 if (chatsData.length > 0) {
                     selectChat(chatsData[0].id, chatsData[0].title);
