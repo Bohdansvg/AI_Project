@@ -369,7 +369,9 @@ function voice() {
         isRecording = false;
         micBtn.classList.remove('recording');
         input1.placeholder = 'Enter your message';
-        // if (finalTranscript.trim()) sendMessage();
+        if (finalTranscript.trim()) {
+            setTimeout(() => sendMessage(), 5000)
+        }
     };
 
     recognition.onerror = (e) => {
