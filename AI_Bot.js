@@ -352,6 +352,7 @@ function voice() {
         finalTranscript = '';
         micBtn.classList.add('recording');
         input1.placeholder = 'Слухаю...';
+
     };
 
     recognition.onresult = (e) => {
@@ -368,7 +369,7 @@ function voice() {
         isRecording = false;
         micBtn.classList.remove('recording');
         input1.placeholder = 'Enter your message';
-        if (finalTranscript.trim()) sendMessage();
+        // if (finalTranscript.trim()) sendMessage();
     };
 
     recognition.onerror = (e) => {
