@@ -324,90 +324,62 @@ document.addEventListener("DOMContentLoaded", () => {
     loadChats()
 })
 
-let recognition = null
-let isRecording = false
+let recognition = null;
+let isRecording = false;
+let finalTranscript = '';
 const micBtn = document.getElementById('micBtn');
+const input = document.getElementById('userInput');
 
 function voice() {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
         alert("Твій браузер не підтримує голосовий ввід. Спробуй Chrome або Edge.");
         return;
     }
+
     if (isRecording) {
         recognition.stop();
         return;
     }
-    const SpeechRecognition = window.SpeechRecognition() || window.webkitSpeechRecognition;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
-    recognition.lang = 'uk-UA'
-    recognition.interimResults = false;
-    recognition.constructor = false;
+    recognition.lang = 'uk-UA';
+    recognition.interimResults = true;
+    recognition.continuous = false;
 
     recognition.onstart = () => {
         isRecording = true;
+        finalTranscript = '';
         micBtn.classList.add('recording');
+        input.placeholder = 'Слухаю...';
     };
 
     recognition.onresult = (e) => {
-        const transcript = e.results[0][0].transcript;
-        document.getElementById("userInput").value += transcript;
+        let interim = '';
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+            const t = e.results[i][0].transcript;
+            if (e.results[i].isFinal) finalTranscript += t;
+            else interim = t;
+        }
+        input.value = finalTranscript + interim;
     };
 
     recognition.onend = () => {
         isRecording = false;
         micBtn.classList.remove('recording');
+        input.placeholder = 'Enter your message';
+        if (finalTranscript.trim()) sendMessage();
     };
+
     recognition.onerror = (e) => {
         isRecording = false;
         micBtn.classList.remove('recording');
-        console.error('Помилка розпізнавання:', e.error);
+        input.placeholder = 'Enter your message';
+        if (e.error !== 'no-speech') console.error('Помилка розпізнавання:', e.error);
     };
+
     recognition.start();
 }
-
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-recognition = new SpeechRecognition()
-recognition.lang = 'uk-UA'
-recognition.interimResults = true;
-recognition.continuons = false
-
-const micBtn = document.getElementById("micBtn");
-const input = document.getElementById("userInput");
-let transcript = ''
-
-recognition.onstart = () => {
-    isRecording = true;
-    finalTranscript = '';
-    micBtn.classList.add("mic--active");
-    input.placeholder = "Слухаю...";
-};
-
-recognition.onresult = (e) => {
-    let interim = '';
-    for (let i = e.resultIndex; i < e.results.length; i++) {
-        const t = e.results[i][0].transcript;
-        if (e.results[i].isFinal) finalTranscript += t;
-        else interim = t;
-    }
-    input.value = finalTranscript + interim;
-};
-
-
-recognition.onend = () => {
-    isRecording = false;
-    micBtn.classList.remove("mic--active");
-    input.placeholder = "Enter your message";
-    if (finalTranscript.trim()) sendMessage();
-};
-
-recognition.onerror = (e) => {
-    isRecording = false;
-    micBtn.classList.remove("mic--active");
-    input.placeholder = "Enter your message";
-    if (e.error !== 'no-speech') console.error("Speech error:", e.error);
-};
-
-recognition.start()
 
 
 async function loadChats() {
