@@ -331,8 +331,6 @@ const micBtn = document.getElementById('micBtn');
 const input1 = document.getElementById('userInput');
 
 
-let silence = null
-
 function voice() {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
         alert("Твій браузер не підтримує голосовий ввід. Спробуй Chrome або Edge.");
@@ -340,9 +338,7 @@ function voice() {
     }
 
     if (isRecording) {
-        isRecording = false;
-        clearTimeout(silence);
-        recognition.stop();
+        stopRecording()
         return;
     }
 
@@ -350,7 +346,7 @@ function voice() {
     recognition = new SpeechRecognition();
     recognition.lang = 'uk-UA';
     recognition.interimResults = true;
-    recognition.continuous = false;
+    recognition.continuous = true;
 
     recognition.onstart = () => {
         isRecording = true;
@@ -369,13 +365,7 @@ function voice() {
         }
         input1.value = finalTranscript + interim;
 
-        clearTimeout(silence)
-        silence = setTimeout(() =>{
-            isRecording = false;
-            recognition.stop();
-        }, 5000)
     };
-
 
     recognition.onend = () => {
         isRecording = false;
@@ -386,13 +376,17 @@ function voice() {
 
     recognition.onerror = (e) => {
         isRecording = false;
-        clearTimeout(silence);
         micBtn.classList.remove('recording');
         input1.placeholder = 'Enter your message';
         if (e.error !== 'no-speech') console.error('Помилка розпізнавання:', e.error);
     };
 
     recognition.start();
+}
+
+function stopRecording() {
+    isRecording = false;
+    recognition.stop();
 }
 
 
