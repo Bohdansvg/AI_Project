@@ -326,12 +326,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let recognition = null
 let isRecording = false
+const micBtn = document.getElementById('micBtn');
 
-function voice(){
-    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+function voice() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
         alert("Твій браузер не підтримує голосовий ввід. Спробуй Chrome або Edge.");
         return;
     }
+    if (isRecording) {
+        recognition.stop();
+        return;
+    }
+    const SpeechRecognition = window.SpeechRecognition() || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'uk-UA'
+    recognition.interimResults = false;
+    recognition.constructor = false;
+
+    recognition.onstart = () => {
+        isRecording = true;
+        micBtn.classList.add('recording');
+    };
+
+    recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        document.getElementById("userInput").value += transcript;
+    };
+
+    recognition.onend = () => {
+        isRecording = false;
+        micBtn.classList.remove('recording');
+    };
+    recognition.onerror = (e) => {
+        isRecording = false;
+        micBtn.classList.remove('recording');
+        console.error('Помилка розпізнавання:', e.error);
+    };
+    recognition.start();
 }
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
