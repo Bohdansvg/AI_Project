@@ -328,7 +328,7 @@ let recognition = null;
 let isRecording = false;
 let finalTranscript = '';
 const micBtn = document.getElementById('micBtn');
-const input = document.getElementById('userInput');
+const input1 = document.getElementById('userInput');
 
 function voice() {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
@@ -351,7 +351,7 @@ function voice() {
         isRecording = true;
         finalTranscript = '';
         micBtn.classList.add('recording');
-        input.placeholder = 'Слухаю...';
+        input1.placeholder = 'Слухаю...';
     };
 
     recognition.onresult = (e) => {
@@ -361,20 +361,20 @@ function voice() {
             if (e.results[i].isFinal) finalTranscript += t;
             else interim = t;
         }
-        input.value = finalTranscript + interim;
+        input1.value = finalTranscript + interim;
     };
 
     recognition.onend = () => {
         isRecording = false;
         micBtn.classList.remove('recording');
-        input.placeholder = 'Enter your message';
+        input1.placeholder = 'Enter your message';
         if (finalTranscript.trim()) sendMessage();
     };
 
     recognition.onerror = (e) => {
         isRecording = false;
         micBtn.classList.remove('recording');
-        input.placeholder = 'Enter your message';
+        input1.placeholder = 'Enter your message';
         if (e.error !== 'no-speech') console.error('Помилка розпізнавання:', e.error);
     };
 
