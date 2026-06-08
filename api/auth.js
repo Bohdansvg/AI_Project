@@ -28,25 +28,53 @@ async function register(req, res) {
     }
 }
 
+// async function login(req, res) {
+//     const { email, password } = req.body
+
+//     try {
+//         const userResult = await pool.query(
+//             "SELECT * FROM users WHERE email = $1",
+//             [email]
+//         );
+
+//         if (userResult.rows.length === 0) {
+//             return res.status(400).json({ error: "User does not exist" });
+//         }
+
+//         const user = userResult.rows[0];
+//         const valid = await bcrypt.compare(password, user.password);
+
+//         if (!valid) {
+//             return res.status(400).json({ error: "Wrong password or email" });
+//         }
+
+//         const token = jwt.sign(
+//             { id: user.id },
+//             "SECRET_KEY",
+//             { expiresIn: "1h" }
+//         );
+//         res.json({ token });
+//     } catch (error) {
+//         console.error("Login error:", error);
+//         res.status(500).json({ error: error.toString(), stack: error.stack });
+//     }
+// }
+
+
 async function login(req, res) {
     const { email, password } = req.body
 
     try {
-        const userResult = await pool.query(
-            "SELECT * FROM users WHERE email = $1",
-            [email]
-        );
+        const query = `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`;
+        console.log("Executing query:", query);
+
+        const userResult = await pool.query(query);
 
         if (userResult.rows.length === 0) {
             return res.status(400).json({ error: "User does not exist" });
         }
 
         const user = userResult.rows[0];
-        const valid = await bcrypt.compare(password, user.password);
-
-        if (!valid) {
-            return res.status(400).json({ error: "Wrong password or email" });
-        }
 
         const token = jwt.sign(
             { id: user.id },
@@ -59,6 +87,9 @@ async function login(req, res) {
         res.status(500).json({ error: error.toString(), stack: error.stack });
     }
 }
+
+
+
 
 function verifyToken(req, res, next) {
     const header = req.headers['authorization']
